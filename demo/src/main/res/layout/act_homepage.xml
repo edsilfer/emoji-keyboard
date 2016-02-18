@@ -23,6 +23,10 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/rsc_bottom_panel"/>
+    <br.com.instachat.emojilibrary.model.EmojiKeyboardLayout
+        android:id="@+id/bottompanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

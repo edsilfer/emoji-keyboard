@@ -1,6 +1,3 @@
 <resources>
     <string name="app_name">emojikeyboard</string>
-
-    <string name="action_attach">Attach Media</string>
-    <string name="action_mic">Speak</string>
 </resources>

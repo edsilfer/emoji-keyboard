@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/emoji_keyboard"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="263dip"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/tab_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
+            android:id="@+id/tabs"
+            android:layout_width="0dip"
+            android:layout_height="40dip"
+            android:layout_weight="1"
+            app:stl_clickable="true"
+            app:stl_defaultTabBackground="@color/rsc_emoji_tab_bkg"
+            app:stl_defaultTabTextAllCaps="true"
+            app:stl_defaultTabTextColor="#000"
+            app:stl_defaultTabTextHorizontalPadding="0dip"
+            app:stl_defaultTabTextMinWidth="0dp"
+            app:stl_defaultTabTextSize="14sp"
+            app:stl_distributeEvenly="true"
+            app:stl_dividerColor="@color/rsc_emoji_tab_bkg"
+            app:stl_drawDecorationAfterTab="true"
+            app:stl_indicatorColor="@color/rsc_emoji_tab_indicator"
+            app:stl_indicatorGravity="bottom"
+            app:stl_indicatorInFront="false"
+            app:stl_indicatorInterpolation="smart"
+            app:stl_indicatorThickness="2dp"
+            app:stl_overlineThickness="0dp"
+            app:stl_titleOffset="24dp"
+            app:stl_underlineThickness="0dp"/>
+
+        <ImageButton
+            android:id="@+id/backspace"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/rsc_emoji_tab_bkg"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:src="@drawable/sym_keyboard_delete_holo_dark"/>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/tab_container"
+        android:background="#EBEFF2"/>
+
+</LinearLayout>

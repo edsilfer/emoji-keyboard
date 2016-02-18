@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">emoji-library</string>
+    <string name="action_attach">Attach Media</string>
+    <string name="action_mic">Speak</string>
+</resources>
