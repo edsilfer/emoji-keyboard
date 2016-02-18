@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 import br.com.instachat.emojikeyboard.R;
 
@@ -14,6 +15,7 @@ import br.com.instachat.emojikeyboard.R;
 public class AcitivityHomepage extends AppCompatActivity {
 
     private Toolbar mBottomPanel;
+    private EditText mInput;
 
     // CALLBACKS
     @Override
@@ -52,6 +54,7 @@ public class AcitivityHomepage extends AppCompatActivity {
         this.getSupportActionBar().setDisplayShowTitleEnabled(false);
         this.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         this.getSupportActionBar().setHomeButtonEnabled(true);
+        this.mInput = (EditText) this.mBottomPanel.findViewById(R.id.input);
     }
 
 

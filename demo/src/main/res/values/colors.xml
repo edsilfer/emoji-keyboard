@@ -5,4 +5,5 @@
     <color name="colorAccent">#FAFAFA</color>
 
     <color name="rsc_bottom_panel_bkg">#F8F8F8</color>
+    <color name="rsc_bottom_panel_accent">#263239</color>
 </resources>

@@ -18,13 +18,14 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <TextView
+        <EditText
             android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Message"
             android:singleLine="true"
-            android:textSize="18dip"/>
+            android:textSize="18dip"
+            android:theme="@style/ActivitySearchEditText"/>
 
     </android.support.v7.widget.Toolbar>
 
