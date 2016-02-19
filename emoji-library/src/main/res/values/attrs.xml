@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Emoji">
+        <attr name="emojiSize" format="dimension" />
+        <attr name="emojiAlignment" format="enum">
+            <enum name="bottom" value="0" />
+            <enum name="baseline" value="1" />
+        </attr>
+        <attr name="emojiTextStart" format="integer" />
+        <attr name="emojiTextLength" format="integer" />
+        <attr name="emojiUseSystemDefault" format="boolean" />
+    </declare-styleable>
+</resources>

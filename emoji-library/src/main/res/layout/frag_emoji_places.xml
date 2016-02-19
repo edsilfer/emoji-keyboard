@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/Emoji_GridView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rsc_emoji_layout_bkg"
-    android:gravity="center"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="THIS IS THE PLACES EMOJIS FRAGMENT"/>
-
-</LinearLayout>
+    android:background="@android:color/transparent"
+    android:cacheColorHint="@android:color/transparent"
+    android:columnWidth="40dip"
+    android:horizontalSpacing="0dip"
+    android:numColumns="auto_fit"
+    android:scrollbars="vertical"
+    android:verticalSpacing="0dip" />
