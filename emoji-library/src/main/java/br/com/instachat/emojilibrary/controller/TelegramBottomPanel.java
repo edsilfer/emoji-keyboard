@@ -2,14 +2,11 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -17,31 +14,36 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter;
-import br.com.instachat.emojilibrary.model.EmojiKeyboardLayout;
+import br.com.instachat.emojilibrary.model.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.model.EmojiEditText;
+import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class TelegramBottomPanel implements SoftKeyboardListener {
+public class TelegramBottomPanel {
 
     private static final String TAG = "TelegramBottomPanel";
 
-    private AppCompatActivity mActivity;
+    private EmojiCompatActivity mActivity;
 
     private Toolbar mBottomPanel;
-    private EditText mInput;
+    private EmojiEditText mInput;
     private ImageView[] mTabIcons = new ImageView[6];
     private LinearLayout mEmojiKeyboard;
-    private Boolean isKeyboardVisible = Boolean.FALSE;
+
+    private Boolean isSoftKeyboardVisible = Boolean.FALSE;
+    private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
+    private Boolean wasSoftKeyboardOpenWhenEmojiKeyboardWasTriggered = Boolean.FALSE;
 
     // CONSTRUCTOR
-    public TelegramBottomPanel(AppCompatActivity activity, EmojiKeyboardLayout keyboardLayout) {
+    public TelegramBottomPanel(EmojiCompatActivity activity) {
         this.mActivity = activity;
 
         this.initBottomPanel();
         this.initEmojiKeyboardViewPager();
-
-        keyboardLayout.setmListener(this);
+        this.setInputConfig();
+        this.setOnBackPressed();
     }
 
     // INITIALIZATION
@@ -50,22 +52,32 @@ public class TelegramBottomPanel implements SoftKeyboardListener {
         this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         this.mBottomPanel.setTitleTextColor(0xFFFFFFFF);
 
-        this.mInput = (EditText) this.mBottomPanel.findViewById(R.id.input);
         this.mEmojiKeyboard = (LinearLayout) this.mActivity.findViewById(R.id.emoji_keyboard);
-
         this.mBottomPanel.inflateMenu(R.menu.rsc_bottom_panel_menu);
 
         this.mBottomPanel.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TelegramBottomPanel.this.isKeyboardVisible) {
-                    TelegramBottomPanel.this.isKeyboardVisible = Boolean.FALSE;
-                    TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.GONE);
-                    TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
+                if (TelegramBottomPanel.this.isEmojiKeyboardVisible) {
+                    TelegramBottomPanel.this.hideEmojiKeyboard();
+                    if (TelegramBottomPanel.this.wasSoftKeyboardOpenWhenEmojiKeyboardWasTriggered) {
+                        TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.TRUE;
+                        SoftKeyboardUtil.showSoftKeyboard(TelegramBottomPanel.this.mInput);
+                    } else {
+                        TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.FALSE;
+                        TelegramBottomPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
+                        SoftKeyboardUtil.dismissSoftKeyboard(TelegramBottomPanel.this.mInput);
+                    }
                 } else {
-                    TelegramBottomPanel.this.isKeyboardVisible = Boolean.TRUE;
-                    TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.VISIBLE);
-                    TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
+                    if (TelegramBottomPanel.this.isSoftKeyboardVisible) {
+                        TelegramBottomPanel.this.wasSoftKeyboardOpenWhenEmojiKeyboardWasTriggered = Boolean.TRUE;
+                        SoftKeyboardUtil.dismissSoftKeyboard(TelegramBottomPanel.this.mInput);
+                        TelegramBottomPanel.this.showEmojiKeyboard(250);
+                    } else {
+                        TelegramBottomPanel.this.wasSoftKeyboardOpenWhenEmojiKeyboardWasTriggered = Boolean.FALSE;
+                        TelegramBottomPanel.this.showEmojiKeyboard(0);
+                    }
+
                 }
             }
         });
@@ -84,6 +96,25 @@ public class TelegramBottomPanel implements SoftKeyboardListener {
             }
         });
 
+    }
+
+    private void showEmojiKeyboard(int delay) {
+        if (delay > 0) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        TelegramBottomPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
+        TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.VISIBLE);
+        TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
+    }
+
+    private void hideEmojiKeyboard() {
+        TelegramBottomPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
+        TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.GONE);
+        TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
     }
 
     private void initEmojiKeyboardViewPager() {
@@ -195,19 +226,42 @@ public class TelegramBottomPanel implements SoftKeyboardListener {
             public void onPageScrollStateChanged(int state) {
             }
         });
-
         viewPagerTab.setViewPager(viewPager);
     }
 
+    private void setInputConfig() {
+        this.mInput = (EmojiEditText) this.mBottomPanel.findViewById(R.id.input);
 
-    // SOFT KEYBOARD LISTENER INTERFACE
-    @Override
-    public void onKeyboardUp() {
-        Log.i(TAG, "SOFTKEYBOARD IS UP");
+        this.mInput.setOnDismissSoftKeyboard(new EmojiEditText.DismissSoftKeyboard() {
+            @Override
+            public void onSoftKeyboardDismissed() {
+                TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.FALSE;
+            }
+        });
+
+        this.mInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.TRUE;
+                } else {
+                    TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.FALSE;
+                }
+            }
+        });
     }
 
-    @Override
-    public void onKeyboardDown() {
-        Log.i(TAG, "SOFTKEYBOARD IS DOWN");
+    private void setOnBackPressed() {
+        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
+            @Override
+            public void onBackPressed() {
+                TelegramBottomPanel.this.isSoftKeyboardVisible = Boolean.FALSE;
+                if (TelegramBottomPanel.this.isEmojiKeyboardVisible) {
+                    TelegramBottomPanel.this.hideEmojiKeyboard();
+                } else {
+                    TelegramBottomPanel.this.mActivity.onBackPressed();
+                }
+            }
+        });
     }
 }

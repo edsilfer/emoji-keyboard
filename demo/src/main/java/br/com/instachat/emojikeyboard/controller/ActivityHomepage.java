@@ -1,18 +1,17 @@
 package br.com.instachat.emojikeyboard.controller;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import br.com.instachat.emojikeyboard.R;
 import br.com.instachat.emojilibrary.controller.TelegramBottomPanel;
-import br.com.instachat.emojilibrary.model.EmojiKeyboardLayout;
+import br.com.instachat.emojilibrary.model.EmojiCompatActivity;
 
 
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityHomepage extends AppCompatActivity {
+public class ActivityHomepage extends EmojiCompatActivity {
 
     private TelegramBottomPanel mPanel;
 
@@ -37,6 +36,6 @@ public class ActivityHomepage extends AppCompatActivity {
     }
 
     private void initBottomPanel() {
-        this.mPanel = new TelegramBottomPanel(this, ((EmojiKeyboardLayout) this.findViewById(R.id.bottompanel)));
+        this.mPanel = new TelegramBottomPanel(this);
     }
 }
