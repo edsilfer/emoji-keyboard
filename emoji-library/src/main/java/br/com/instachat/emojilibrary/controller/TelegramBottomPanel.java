@@ -1,5 +1,6 @@
 package br.com.instachat.emojilibrary.controller;
 
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter;
@@ -222,7 +227,20 @@ public class TelegramBottomPanel {
             @Override
             public void onSoftKeyboardDisplay() {
                 if (!TelegramBottomPanel.this.isEmojiKeyboardVisible) {
-                    TelegramBottomPanel.this.showEmojiKeyboard(0);
+                    final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+                    scheduler.schedule(new Runnable() {
+                        @Override
+                        public void run() {
+                            Handler mainHandler = new Handler(TelegramBottomPanel.this.mActivity.getMainLooper());
+                            Runnable myRunnable = new Runnable() {
+                                @Override
+                                public void run() {
+                                    TelegramBottomPanel.this.showEmojiKeyboard(0);
+                                }
+                            };
+                            mainHandler.post(myRunnable);
+                        }
+                    }, 150, TimeUnit.MILLISECONDS);
                 }
             }
 
