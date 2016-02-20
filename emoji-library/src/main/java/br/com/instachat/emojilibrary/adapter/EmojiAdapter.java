@@ -8,52 +8,58 @@ import android.widget.ArrayAdapter;
 import java.util.List;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.controller.Emoji;
-import br.com.instachat.emojilibrary.controller.EmojiTextView;
+import br.com.instachat.emojilibrary.model.EmojiTextView;
+import br.com.instachat.emojilibrary.model.Emoji;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
  */
 public class EmojiAdapter extends ArrayAdapter<Emoji> {
-    private boolean mUseSystemDefault = false;
+
+    private boolean mUseSystemDefault = Boolean.FALSE;
+
+    // CONSTRUCTOR
+    public EmojiAdapter(Context context, Emoji[] data) {
+        super(context, R.layout.src_emoji_item, data);
+    }
 
     public EmojiAdapter(Context context, List<Emoji> data) {
         super(context, R.layout.src_emoji_item, data);
-        mUseSystemDefault = false;
     }
 
     public EmojiAdapter(Context context, List<Emoji> data, boolean useSystemDefault) {
         super(context, R.layout.src_emoji_item, data);
-        mUseSystemDefault = useSystemDefault;
+        this.mUseSystemDefault = useSystemDefault;
     }
 
-    public EmojiAdapter(Context context, Emoji[] data) {
-        super(context, R.layout.src_emoji_item, data);
-        mUseSystemDefault = false;
-    }
 
     public EmojiAdapter(Context context, Emoji[] data, boolean useSystemDefault) {
         super(context, R.layout.src_emoji_item, data);
-        mUseSystemDefault = useSystemDefault;
+        this.mUseSystemDefault = useSystemDefault;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = convertView;
-        if (v == null) {
-            v = View.inflate(getContext(), R.layout.src_emoji_item, null);
-            ViewHolder holder = new ViewHolder();
-            holder.icon = (EmojiTextView) v.findViewById(R.id.emoji_icon);
-            holder.icon.setUseSystemDefault(true);
-            v.setTag(holder);
+        View view = convertView;
+
+        if (view == null) {
+            view = View.inflate(getContext(), R.layout.src_emoji_item, null);
+            view.setTag(new ViewHolder(view, this.mUseSystemDefault));
         }
-        Emoji emoji = getItem(position);
-        ViewHolder holder = (ViewHolder) v.getTag();
+
+        Emoji emoji = this.getItem(position);
+        ViewHolder holder = (ViewHolder) view.getTag();
         holder.icon.setText(emoji.getEmoji());
-        return v;
+
+        return view;
     }
 
     static class ViewHolder {
         EmojiTextView icon;
+
+        public ViewHolder(View view, Boolean useSystemDefault) {
+            this.icon = (EmojiTextView) view.findViewById(R.id.emoji_icon);
+            this.icon.setUseSystemDefault(useSystemDefault);
+        }
     }
 }

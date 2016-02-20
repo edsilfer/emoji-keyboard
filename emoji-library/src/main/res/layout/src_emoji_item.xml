@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:emojicon="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <br.com.instachat.emojilibrary.controller.EmojiTextView
-        android:layout_gravity="center"
+    <br.com.instachat.emojilibrary.model.EmojiTextView
         android:id="@+id/emoji_icon"
         android:layout_width="36dip"
         android:layout_height="36dip"
-        emojicon:emojiSize="40dip"
-        android:gravity="center" />
+        android:layout_gravity="center"
+        android:gravity="center"
+        emojicon:emojiSize="30dip"/>
 </FrameLayout>

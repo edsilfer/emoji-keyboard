@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.model;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
@@ -96,16 +96,16 @@ public class Places {
             Emoji.fromCodePoint(0x1f3ad),
             Emoji.fromCodePoint(0x1f4cd),
             Emoji.fromCodePoint(0x1f6a9),
-            Emoji.fromChars("\ud83c\uddef\ud83c\uddf5"),
-            Emoji.fromChars("\ud83c\uddf0\ud83c\uddf7"),
-            Emoji.fromChars("\ud83c\udde9\ud83c\uddea"),
-            Emoji.fromChars("\ud83c\udde8\ud83c\uddf3"),
-            Emoji.fromChars("\ud83c\uddfa\ud83c\uddf8"),
-            Emoji.fromChars("\ud83c\uddeb\ud83c\uddf7"),
-            Emoji.fromChars("\ud83c\uddea\ud83c\uddf8"),
-            Emoji.fromChars("\ud83c\uddee\ud83c\uddf9"),
-            Emoji.fromChars("\ud83c\uddf7\ud83c\uddfa"),
-            Emoji.fromChars("\ud83c\uddec\ud83c\udde7"),
+            Emoji.fromString("\ud83c\uddef\ud83c\uddf5"),
+            Emoji.fromString("\ud83c\uddf0\ud83c\uddf7"),
+            Emoji.fromString("\ud83c\udde9\ud83c\uddea"),
+            Emoji.fromString("\ud83c\udde8\ud83c\uddf3"),
+            Emoji.fromString("\ud83c\uddfa\ud83c\uddf8"),
+            Emoji.fromString("\ud83c\uddeb\ud83c\uddf7"),
+            Emoji.fromString("\ud83c\uddea\ud83c\uddf8"),
+            Emoji.fromString("\ud83c\uddee\ud83c\uddf9"),
+            Emoji.fromString("\ud83c\uddf7\ud83c\uddfa"),
+            Emoji.fromString("\ud83c\uddec\ud83c\udde7"),
     };
 }
 

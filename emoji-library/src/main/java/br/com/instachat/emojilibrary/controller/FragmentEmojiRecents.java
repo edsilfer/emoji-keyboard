@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

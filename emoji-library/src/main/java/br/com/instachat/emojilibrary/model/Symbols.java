@@ -1,23 +1,23 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.model;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
  */
 public class Symbols {
     public static final Emoji[] DATA = new Emoji[]{
-            Emoji.fromChars("\u0031\u20e3"),
-            Emoji.fromChars("\u0032\u20e3"),
-            Emoji.fromChars("\u0033\u20e3"),
-            Emoji.fromChars("\u0034\u20e3"),
-            Emoji.fromChars("\u0035\u20e3"),
-            Emoji.fromChars("\u0036\u20e3"),
-            Emoji.fromChars("\u0037\u20e3"),
-            Emoji.fromChars("\u0038\u20e3"),
-            Emoji.fromChars("\u0039\u20e3"),
-            Emoji.fromChars("\u0030\u20e3"),
+            Emoji.fromString("\u0031\u20e3"),
+            Emoji.fromString("\u0032\u20e3"),
+            Emoji.fromString("\u0033\u20e3"),
+            Emoji.fromString("\u0034\u20e3"),
+            Emoji.fromString("\u0035\u20e3"),
+            Emoji.fromString("\u0036\u20e3"),
+            Emoji.fromString("\u0037\u20e3"),
+            Emoji.fromString("\u0038\u20e3"),
+            Emoji.fromString("\u0039\u20e3"),
+            Emoji.fromString("\u0030\u20e3"),
             Emoji.fromCodePoint(0x1f51f),
             Emoji.fromCodePoint(0x1f522),
-            Emoji.fromChars("\u0023\u20e3"),
+            Emoji.fromString("\u0023\u20e3"),
             Emoji.fromCodePoint(0x1f523),
             Emoji.fromChar((char) 0x2b06),
             Emoji.fromChar((char) 0x2b07),

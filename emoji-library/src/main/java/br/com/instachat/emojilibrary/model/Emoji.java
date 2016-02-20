@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -8,23 +8,16 @@ import android.os.Parcelable;
  */
 public class Emoji implements Parcelable {
 
-    public static final Creator<Emoji> CREATOR = new Creator<Emoji>() {
-        @Override
-        public Emoji createFromParcel(Parcel in) {
-            return new Emoji(in);
-        }
-
-        @Override
-        public Emoji[] newArray(int size) {
-            return new Emoji[size];
-        }
-    };
+    public static final String TAG = "Emoji";
 
     private int icon;
-
     private char value;
-
     private String emoji;
+
+    // CONSTRUCTORS
+
+    private Emoji() {
+    }
 
     public Emoji(int icon, char value, String emoji) {
         this.icon = icon;
@@ -38,8 +31,6 @@ public class Emoji implements Parcelable {
         this.emoji = in.readString();
     }
 
-    private Emoji() {
-    }
 
     public Emoji(String emoji) {
         this.emoji = emoji;
@@ -64,7 +55,7 @@ public class Emoji implements Parcelable {
         return emoji;
     }
 
-    public static Emoji fromChars(String chars) {
+    public static Emoji fromString(String chars) {
         Emoji emoji = new Emoji();
         emoji.emoji = chars;
         return emoji;
@@ -84,12 +75,35 @@ public class Emoji implements Parcelable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        return o instanceof Emoji && emoji.equals(((Emoji) o).emoji);
+    }
+
+    @Override
+    public int hashCode() {
+        return emoji.hashCode();
+    }
+
+    public static final Creator<Emoji> CREATOR = new Creator<Emoji>() {
+        @Override
+        public Emoji createFromParcel(Parcel in) {
+            return new Emoji(in);
+        }
+
+        @Override
+        public Emoji[] newArray(int size) {
+            return new Emoji[size];
+        }
+    };
+
+    @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(icon);
         dest.writeInt(value);
         dest.writeString(emoji);
     }
 
+    // GETTERS AND SETERS
     public char getValue() {
         return value;
     }
@@ -101,15 +115,4 @@ public class Emoji implements Parcelable {
     public String getEmoji() {
         return emoji;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        return o instanceof Emoji && emoji.equals(((Emoji) o).emoji);
-    }
-
-    @Override
-    public int hashCode() {
-        return emoji.hashCode();
-    }
-
 }

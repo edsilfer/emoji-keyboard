@@ -4,12 +4,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
-import br.com.instachat.emojilibrary.model.FragmentEmojiNature;
-import br.com.instachat.emojilibrary.model.FragmentEmojiObjects;
-import br.com.instachat.emojilibrary.model.FragmentEmojiPeople;
-import br.com.instachat.emojilibrary.model.FragmentEmojiPlaces;
-import br.com.instachat.emojilibrary.model.FragmentEmojiRecents;
-import br.com.instachat.emojilibrary.model.FragmentEmojiSymbols;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiNature;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiObjects;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiPeople;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiPlaces;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiRecents;
+import br.com.instachat.emojilibrary.controller.FragmentEmojiSymbols;
 
 public class EmojiTabAdapter extends FragmentPagerAdapter {
 

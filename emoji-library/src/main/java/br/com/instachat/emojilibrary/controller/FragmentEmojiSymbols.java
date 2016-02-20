@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -10,8 +10,9 @@ import android.widget.GridView;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
-import br.com.instachat.emojilibrary.controller.Emoji;
-import br.com.instachat.emojilibrary.controller.Places;
+import br.com.instachat.emojilibrary.model.Emoji;
+import br.com.instachat.emojilibrary.model.Places;
+import br.com.instachat.emojilibrary.model.Symbols;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -37,7 +38,7 @@ public class FragmentEmojiSymbols extends Fragment {
         GridView gridView = (GridView) view.findViewById(R.id.Emoji_GridView);
         Bundle bundle = getArguments();
         if (bundle == null) {
-            mData = Places.DATA;
+            mData = Symbols.DATA;
             mUseSystemDefault = false;
         } else {
             Parcelable[] parcels = bundle.getParcelableArray(EMOJI_KEY);

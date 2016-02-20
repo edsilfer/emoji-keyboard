@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -10,15 +10,16 @@ import android.widget.GridView;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
-import br.com.instachat.emojilibrary.controller.Emoji;
-import br.com.instachat.emojilibrary.controller.Places;
+import br.com.instachat.emojilibrary.model.Emoji;
+import br.com.instachat.emojilibrary.model.Nature;
+import br.com.instachat.emojilibrary.model.Places;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiPlaces extends Fragment {
+public class FragmentEmojiNature extends Fragment {
 
-    public static final String TAG = "FragmentEmojiPlaces";
+    public static final String TAG = "FragmentEmojiNature";
 
     private View mRootView;
     private Emoji[] mData;
@@ -29,16 +30,15 @@ public class FragmentEmojiPlaces extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.mRootView = inflater.inflate(R.layout.frag_emoji_places, container, false);
+        this.mRootView = inflater.inflate(R.layout.frag_emoji_nature, container, false);
         return this.mRootView;
-}
-
+    }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         GridView gridView = (GridView) view.findViewById(R.id.Emoji_GridView);
         Bundle bundle = getArguments();
         if (bundle == null) {
-            mData = Places.DATA;
+            mData = Nature.DATA;
             mUseSystemDefault = false;
         } else {
             Parcelable[] parcels = bundle.getParcelableArray(EMOJI_KEY);
@@ -52,4 +52,3 @@ public class FragmentEmojiPlaces extends Fragment {
 
     }
 }
-

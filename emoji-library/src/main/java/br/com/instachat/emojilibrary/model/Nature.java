@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.model;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
