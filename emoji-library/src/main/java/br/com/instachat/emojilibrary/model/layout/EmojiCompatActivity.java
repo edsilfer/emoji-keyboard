@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.model.layout;
 
 import android.support.v7.app.AppCompatActivity;
 

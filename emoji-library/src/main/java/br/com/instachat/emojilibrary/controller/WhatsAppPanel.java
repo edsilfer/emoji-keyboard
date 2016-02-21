@@ -19,15 +19,15 @@ import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter;
-import br.com.instachat.emojilibrary.model.EmojiCompatActivity;
-import br.com.instachat.emojilibrary.model.EmojiEditText;
+import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class TelegramBottomPanel {
+public class WhatsAppPanel {
 
-    private static final String TAG = "TelegramBottomPanel";
+    private static final String TAG = "TelegramPanel";
 
     private EmojiCompatActivity mActivity;
 
@@ -39,7 +39,7 @@ public class TelegramBottomPanel {
     private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
 
     // CONSTRUCTOR
-    public TelegramBottomPanel(EmojiCompatActivity activity) {
+    public WhatsAppPanel(EmojiCompatActivity activity) {
         this.mActivity = activity;
 
         this.initBottomPanel();
@@ -60,17 +60,17 @@ public class TelegramBottomPanel {
         this.mBottomPanel.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TelegramBottomPanel.this.isEmojiKeyboardVisible) {
-                    if (TelegramBottomPanel.this.mInput.isSoftKeyboardVisible()) {
-                        TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
-                        TelegramBottomPanel.this.mInput.hideSoftKeyboard();
+                if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
+                    if (WhatsAppPanel.this.mInput.isSoftKeyboardVisible()) {
+                        WhatsAppPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
+                        WhatsAppPanel.this.mInput.hideSoftKeyboard();
                     } else {
-                        TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
-                        TelegramBottomPanel.this.mInput.showSoftKeyboard();
+                        WhatsAppPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
+                        WhatsAppPanel.this.mInput.showSoftKeyboard();
                     }
                 } else {
-                    TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
-                    TelegramBottomPanel.this.showEmojiKeyboard(0);
+                    WhatsAppPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
+                    WhatsAppPanel.this.showEmojiKeyboard(0);
                 }
             }
         });
@@ -99,14 +99,14 @@ public class TelegramBottomPanel {
                 e.printStackTrace();
             }
         }
-        TelegramBottomPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
-        TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.VISIBLE);
+        WhatsAppPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
+        WhatsAppPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.VISIBLE);
     }
 
     private void hideEmojiKeyboard() {
-        TelegramBottomPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
-        TelegramBottomPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
-        TelegramBottomPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.GONE);
+        WhatsAppPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
+        WhatsAppPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
+        WhatsAppPanel.this.mEmojiKeyboard.setVisibility(LinearLayout.GONE);
     }
 
     private void initEmojiKeyboardViewPager() {
@@ -226,16 +226,16 @@ public class TelegramBottomPanel {
         this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
             @Override
             public void onSoftKeyboardDisplay() {
-                if (!TelegramBottomPanel.this.isEmojiKeyboardVisible) {
+                if (!WhatsAppPanel.this.isEmojiKeyboardVisible) {
                     final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
                     scheduler.schedule(new Runnable() {
                         @Override
                         public void run() {
-                            Handler mainHandler = new Handler(TelegramBottomPanel.this.mActivity.getMainLooper());
+                            Handler mainHandler = new Handler(WhatsAppPanel.this.mActivity.getMainLooper());
                             Runnable myRunnable = new Runnable() {
                                 @Override
                                 public void run() {
-                                    TelegramBottomPanel.this.showEmojiKeyboard(0);
+                                    WhatsAppPanel.this.showEmojiKeyboard(0);
                                 }
                             };
                             mainHandler.post(myRunnable);
@@ -246,8 +246,8 @@ public class TelegramBottomPanel {
 
             @Override
             public void onSoftKeyboardHidden() {
-                if (TelegramBottomPanel.this.isEmojiKeyboardVisible) {
-                    TelegramBottomPanel.this.hideEmojiKeyboard();
+                if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
+                    WhatsAppPanel.this.hideEmojiKeyboard();
                 }
             }
         });
@@ -257,10 +257,10 @@ public class TelegramBottomPanel {
         this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
             @Override
             public void onBackPressed() {
-                if (TelegramBottomPanel.this.isEmojiKeyboardVisible) {
-                    TelegramBottomPanel.this.hideEmojiKeyboard();
+                if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
+                    WhatsAppPanel.this.hideEmojiKeyboard();
                 } else {
-                    TelegramBottomPanel.this.mActivity.onBackPressed();
+                    WhatsAppPanel.this.mActivity.onBackPressed();
                 }
             }
         });

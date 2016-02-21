@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import java.util.List;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.model.EmojiTextView;
 import br.com.instachat.emojilibrary.model.Emoji;
+import br.com.instachat.emojilibrary.model.layout.EmojiTextView;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
@@ -31,7 +31,6 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
         super(context, R.layout.src_emoji_item, data);
         this.mUseSystemDefault = useSystemDefault;
     }
-
 
     public EmojiAdapter(Context context, Emoji[] data, boolean useSystemDefault) {
         super(context, R.layout.src_emoji_item, data);

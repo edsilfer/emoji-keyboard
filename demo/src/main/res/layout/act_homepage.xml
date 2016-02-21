@@ -23,7 +23,7 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
 
-    <br.com.instachat.emojilibrary.model.EmojiKeyboardLayout
+    <br.com.instachat.emojilibrary.model.layout.EmojiKeyboardLayout
         android:id="@+id/bottompanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

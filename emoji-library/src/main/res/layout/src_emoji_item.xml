@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <br.com.instachat.emojilibrary.model.EmojiTextView
+    <br.com.instachat.emojilibrary.model.layout.EmojiTextView
         android:id="@+id/emoji_icon"
         android:layout_width="36dip"
         android:layout_height="36dip"

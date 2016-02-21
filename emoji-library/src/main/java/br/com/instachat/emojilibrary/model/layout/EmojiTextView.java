@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.model.layout;
 
 /**
  * Created by Leonardo Assunção on 18/02/2016.
@@ -13,7 +13,7 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.util.EmojiHandler;
+import br.com.instachat.emojilibrary.util.EmojiUtil;
 
 /**
  * @author Hieu Rocker (rockerhieu@gmail.com).
@@ -61,7 +61,7 @@ public class EmojiTextView extends TextView {
     public void setText(CharSequence text, BufferType type) {
         if (!TextUtils.isEmpty(text)) {
             SpannableStringBuilder builder = new SpannableStringBuilder(text);
-            EmojiHandler.addEmojis(
+            EmojiUtil.addEmojis(
                     this.getContext(),
                     builder,
                     this.mEmojiSize,

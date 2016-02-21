@@ -2,22 +2,22 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
-import br.com.instachat.emojilibrary.model.Constants;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.People;
+import br.com.instachat.emojilibrary.util.Constants;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiPeople extends Fragment {
+public class FragmentEmojiPeople extends FragmentEmoji implements AdapterView.OnItemClickListener {
 
     public static final String TAG = "FragmentEmojiPeople";
 
@@ -50,6 +50,7 @@ public class FragmentEmojiPeople extends Fragment {
             this.mUseSystemDefault = bundle.getBoolean(Constants.USE_SYSTEM_DEFAULT_KEY);
         }
         gridView.setAdapter(new EmojiAdapter(view.getContext(), this.mData, this.mUseSystemDefault));
+        gridView.setOnItemClickListener(this);
 
     }
 }

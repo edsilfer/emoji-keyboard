@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.model.layout;
 
 import android.annotation.TargetApi;
 import android.content.Context;
