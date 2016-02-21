@@ -27,7 +27,8 @@
             android:singleLine="true"
             android:textColor="@color/rsc_bottom_panel_accent"
             android:textSize="18dip"
-            android:theme="@style/ActivitySearchEditText"/>
+            android:theme="@style/ActivitySearchEditText"
+            app:emojiSize="25dip"/>
 
     </android.support.v7.widget.Toolbar>
 

@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <com.ogaclejapan.smarttablayout.SmartTabLayout
-            android:id="@+id/tabs"
+            android:id="@+id/emoji_tabs"
             android:layout_width="0dip"
             android:layout_height="40dip"
             android:layout_weight="1"
@@ -49,7 +49,7 @@
     </LinearLayout>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/emoji_viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

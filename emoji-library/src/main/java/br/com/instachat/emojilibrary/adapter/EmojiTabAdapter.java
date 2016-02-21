@@ -10,6 +10,7 @@ import br.com.instachat.emojilibrary.controller.FragmentEmojiPeople;
 import br.com.instachat.emojilibrary.controller.FragmentEmojiPlaces;
 import br.com.instachat.emojilibrary.controller.FragmentEmojiRecents;
 import br.com.instachat.emojilibrary.controller.FragmentEmojiSymbols;
+import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
 
 public class EmojiTabAdapter extends FragmentPagerAdapter {
 
@@ -75,5 +76,15 @@ public class EmojiTabAdapter extends FragmentPagerAdapter {
             default:
                 return FRAGMENT_EMOJI_RECENTS;
         }
+    }
+
+    // GETTERS AND SETTERS
+    public void setOnEmojiClickListener(OnEmojiClickListener listener) {
+        EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS.addEmojiconClickListener(listener);
+        EmojiTabAdapter.FRAGMENT_EMOJI_PEOPLE.addEmojiconClickListener(listener);
+        EmojiTabAdapter.FRAGMENT_EMOJI_NATURE.addEmojiconClickListener(listener);
+        EmojiTabAdapter.FRAGMENT_EMOJI_OBJECTS.addEmojiconClickListener(listener);
+        EmojiTabAdapter.FRAGMENT_EMOJI_PLACES.addEmojiconClickListener(listener);
+        EmojiTabAdapter.FRAGMENT_EMOJI_SYMBOLS.addEmojiconClickListener(listener);
     }
 }

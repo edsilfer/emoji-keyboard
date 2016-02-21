@@ -112,10 +112,10 @@ public class WhatsAppPanel {
     private void initEmojiKeyboardViewPager() {
         EmojiTabAdapter adapter = new EmojiTabAdapter(this.mActivity.getSupportFragmentManager());
 
-        ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.emoji_viewpager);
         viewPager.setAdapter(adapter);
 
-        final SmartTabLayout viewPagerTab = (SmartTabLayout) this.mActivity.findViewById(R.id.tabs);
+        final SmartTabLayout viewPagerTab = (SmartTabLayout) this.mActivity.findViewById(R.id.emoji_tabs);
 
         final LayoutInflater inf = LayoutInflater.from(this.mActivity);
         viewPagerTab.setCustomTabView(new SmartTabLayout.TabProvider() {

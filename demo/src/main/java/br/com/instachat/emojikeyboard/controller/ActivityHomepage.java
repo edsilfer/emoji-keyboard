@@ -1,55 +1,84 @@
 package br.com.instachat.emojikeyboard.controller;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
+
 import br.com.instachat.emojikeyboard.R;
-import br.com.instachat.emojilibrary.controller.TelegramPanel;
-import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.OnEmojiconClickedListener;
+import br.com.instachat.emojikeyboard.adapter.TabAdapter;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 
 
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityHomepage extends EmojiCompatActivity implements OnEmojiconClickedListener {
-
-    private TelegramPanel mPanel;
+public class ActivityHomepage extends EmojiCompatActivity {
 
     // CALLBACKS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_homepage);
-
-        this.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.background));
-
         this.initToolbar();
-        this.initBottomPanel();
+        this.initViewPager();
     }
 
     // INITIALIZATIONS
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) this.findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(0xFFFFFFFF);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
+        this.setWindowBackground(this.getResources().getDrawable(R.drawable.telegram_bkg));
         this.setSupportActionBar(toolbar);
-        this.getSupportActionBar().setTitle("Emoji Keyboard Sample");
+        this.setToolbarText("Telegram");
     }
 
-    private void initBottomPanel() {
-        this.mPanel = new TelegramPanel(this);
+    private void initViewPager() {
+        TabAdapter adapter = new TabAdapter(this.getSupportFragmentManager());
+
+        ViewPager viewPager = (ViewPager) this.findViewById(R.id.viewpager);
+        viewPager.setAdapter(adapter);
+
+        final SmartTabLayout viewPagerTab = (SmartTabLayout) this.findViewById(R.id.tabs);
+        viewPagerTab.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                switch (position) {
+                    case 0:
+                        ActivityHomepage.this.setToolbarText("Telegram");
+                        ActivityHomepage.this.setWindowBackground(ActivityHomepage.this.getResources().getDrawable(R.drawable.telegram_bkg));
+                        break;
+                    case 1:
+                        ActivityHomepage.this.setToolbarText("Whats App");
+                        ActivityHomepage.this.setWindowBackground(ActivityHomepage.this.getResources().getDrawable(R.drawable.whatsapp_bkg));
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        viewPagerTab.setViewPager(viewPager);
     }
 
-    @Override
-    public void onEmojiconClicked(Emoji emojicon) {
-        int start = this.mPanel.getInput().getSelectionStart();
-        int end = this.mPanel.getInput().getSelectionEnd();
-
-        if (start < 0) {
-            this.mPanel.getInput().append(emojicon.getEmoji());
-        } else {
-            this.mPanel.getInput().getText().replace(Math.min(start, end), Math.max(start, end), emojicon.getEmoji(), 0, emojicon.getEmoji().length());
-        }
+    // GETTERS AND SETTERS
+    public void setToolbarText(String text) {
+        this.getSupportActionBar().setTitle(text);
     }
+
+    public void setWindowBackground(Drawable bkg) {
+        this.getWindow().setBackgroundDrawable(bkg);
+    }
+
 }

@@ -18,7 +18,7 @@ import br.com.instachat.emojilibrary.model.Places;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiObjects extends Fragment {
+public class FragmentEmojiObjects extends FragmentEmoji {
 
     public static final String TAG = "FragmentEmojiObjects";
 
@@ -52,6 +52,6 @@ public class FragmentEmojiObjects extends Fragment {
             mUseSystemDefault = bundle.getBoolean(USE_SYSTEM_DEFAULT_KEY);
         }
         gridView.setAdapter(new EmojiAdapter(view.getContext(), mData, mUseSystemDefault));
-
+        gridView.setOnItemClickListener(this);
     }
 }

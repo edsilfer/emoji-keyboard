@@ -1,6 +1,5 @@
 package br.com.instachat.emojilibrary.controller;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.widget.AdapterView;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.OnEmojiconClickedListener;
+import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -19,7 +18,7 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
 
     public static final String TAG = "FragmentEmoji";
 
-    private OnEmojiconClickedListener mOnEmojiconClickedListener;
+    private OnEmojiClickListener mOnEmojiconClickedListener;
     private View mRootView;
 
     @Override
@@ -29,21 +28,13 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnEmojiconClickedListener) {
-            this.mOnEmojiconClickedListener = (OnEmojiconClickedListener) context;
-        } else if (getParentFragment() instanceof OnEmojiconClickedListener) {
-            this.mOnEmojiconClickedListener = (OnEmojiconClickedListener) getParentFragment();
-        } else {
-            throw new IllegalArgumentException(context + " must implement interface " + OnEmojiconClickedListener.class.getSimpleName());
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mOnEmojiconClickedListener != null) {
+            mOnEmojiconClickedListener.onEmojiClicked((Emoji) parent.getItemAtPosition(position));
         }
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (mOnEmojiconClickedListener != null) {
-            mOnEmojiconClickedListener.onEmojiconClicked((Emoji) parent.getItemAtPosition(position));
-        }
+    public void addEmojiconClickListener(OnEmojiClickListener listener) {
+        this.mOnEmojiconClickedListener = listener;
     }
 }

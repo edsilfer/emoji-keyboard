@@ -20,20 +20,20 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
 
     // CONSTRUCTOR
     public EmojiAdapter(Context context, Emoji[] data) {
-        super(context, R.layout.src_emoji_item, data);
+        super(context, R.layout.rsc_emoji_item, data);
     }
 
     public EmojiAdapter(Context context, List<Emoji> data) {
-        super(context, R.layout.src_emoji_item, data);
+        super(context, R.layout.rsc_emoji_item, data);
     }
 
     public EmojiAdapter(Context context, List<Emoji> data, boolean useSystemDefault) {
-        super(context, R.layout.src_emoji_item, data);
+        super(context, R.layout.rsc_emoji_item, data);
         this.mUseSystemDefault = useSystemDefault;
     }
 
     public EmojiAdapter(Context context, Emoji[] data, boolean useSystemDefault) {
-        super(context, R.layout.src_emoji_item, data);
+        super(context, R.layout.rsc_emoji_item, data);
         this.mUseSystemDefault = useSystemDefault;
     }
 
@@ -42,7 +42,7 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
         View view = convertView;
 
         if (view == null) {
-            view = View.inflate(getContext(), R.layout.src_emoji_item, null);
+            view = View.inflate(getContext(), R.layout.rsc_emoji_item, null);
             view.setTag(new ViewHolder(view, this.mUseSystemDefault));
         }
 

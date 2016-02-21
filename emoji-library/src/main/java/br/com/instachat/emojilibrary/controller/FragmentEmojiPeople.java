@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import br.com.instachat.emojilibrary.R;
@@ -17,7 +16,7 @@ import br.com.instachat.emojilibrary.util.Constants;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiPeople extends FragmentEmoji implements AdapterView.OnItemClickListener {
+public class FragmentEmojiPeople extends FragmentEmoji {
 
     public static final String TAG = "FragmentEmojiPeople";
 
@@ -51,6 +50,5 @@ public class FragmentEmojiPeople extends FragmentEmoji implements AdapterView.On
         }
         gridView.setAdapter(new EmojiAdapter(view.getContext(), this.mData, this.mUseSystemDefault));
         gridView.setOnItemClickListener(this);
-
     }
 }

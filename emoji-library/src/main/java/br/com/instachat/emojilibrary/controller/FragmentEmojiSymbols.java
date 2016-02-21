@@ -2,7 +2,6 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,12 @@ import android.widget.GridView;
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.Places;
 import br.com.instachat.emojilibrary.model.Symbols;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiSymbols extends Fragment {
+public class FragmentEmojiSymbols extends FragmentEmoji {
 
     public static final String TAG = "FragmentEmojiSymbols";
 
@@ -33,6 +31,7 @@ public class FragmentEmojiSymbols extends Fragment {
         this.mRootView = inflater.inflate(R.layout.frag_emoji_symbols, container, false);
         return this.mRootView;
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         GridView gridView = (GridView) view.findViewById(R.id.Emoji_GridView);
@@ -49,6 +48,6 @@ public class FragmentEmojiSymbols extends Fragment {
             mUseSystemDefault = bundle.getBoolean(USE_SYSTEM_DEFAULT_KEY);
         }
         gridView.setAdapter(new EmojiAdapter(view.getContext(), mData, mUseSystemDefault));
-
+        gridView.setOnItemClickListener(this);
     }
 }
