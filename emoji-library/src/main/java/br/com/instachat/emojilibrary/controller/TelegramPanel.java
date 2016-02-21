@@ -2,6 +2,8 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -107,6 +109,36 @@ public class TelegramPanel {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
                     TelegramPanel.this.hideEmojiKeyboard();
                 }
+            }
+        });
+
+        this.mInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                MenuItem attachButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
+                MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
+                if (!TelegramPanel.this.mInput.getText().toString().equals("")) {
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(0).scaleY(0).setDuration(150).start();
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).start();
+                    micButton.setIcon(R.drawable.ic_send);
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+
+                } else {
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(1).scaleY(1).setDuration(150).start();
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).start();
+                    micButton.setIcon(R.drawable.ic_microphone_grey600_24dp);
+                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
     }
