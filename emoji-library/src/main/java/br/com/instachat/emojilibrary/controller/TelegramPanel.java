@@ -1,5 +1,6 @@
 package br.com.instachat.emojilibrary.controller;
 
+import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -126,19 +127,29 @@ public class TelegramPanel {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                MenuItem attachButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
-                MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
-                if (!TelegramPanel.this.mInput.getText().toString().equals("")) {
+                final MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
+                if (!TelegramPanel.this.mInput.getText().toString().equals("") && (TelegramPanel.this.mInput.getText().toString().length() == 1)) {
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(0).scaleY(0).setDuration(150).start();
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).start();
-                    micButton.setIcon(R.drawable.ic_send_telegram);
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
-
-                } else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                micButton.setIcon(R.drawable.ic_send_telegram);
+                                TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                            }
+                        }).start();
+                    }
+                } else if (TelegramPanel.this.mInput.getText().toString().equals("")) {
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(1).scaleY(1).setDuration(150).start();
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).start();
-                    micButton.setIcon(R.drawable.ic_microphone_grey600_24dp);
-                    TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
+                            @Override
+                            public void run() {
+                                micButton.setIcon(R.drawable.ic_microphone_grey600_24dp);
+                                TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
+                            }
+                        }).start();
+                    }
                 }
             }
 
