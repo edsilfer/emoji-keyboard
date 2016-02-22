@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">emojikeyboard</string>
+    <string name="menu_action_toogle_activity">toogle</string>
 </resources>

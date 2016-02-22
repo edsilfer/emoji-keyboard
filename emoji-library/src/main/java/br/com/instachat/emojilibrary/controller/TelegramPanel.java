@@ -13,6 +13,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
+import br.com.instachat.emojilibrary.model.TelegramPanelEventListener;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
 
@@ -24,20 +25,21 @@ public class TelegramPanel {
     private static final String TAG = "TelegramPanel";
 
     private EmojiCompatActivity mActivity;
-
     private Toolbar mBottomPanel;
     private EmojiEditText mInput;
     private EmojiKeyboard mEmojiKeyboard;
+    private TelegramPanelEventListener mListener;
 
     private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
 
     // CONSTRUCTOR
-    public TelegramPanel(EmojiCompatActivity activity) {
+    public TelegramPanel(EmojiCompatActivity activity, TelegramPanelEventListener listener) {
         this.mActivity = activity;
         this.initBottomPanel();
         this.setInputConfig();
         this.setOnBackPressed();
         this.mEmojiKeyboard = new EmojiKeyboard(this.mActivity, this.mInput);
+        this.mListener = listener;
     }
 
     // INITIALIZATION
@@ -68,17 +70,21 @@ public class TelegramPanel {
         this.mBottomPanel.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                int i = item.getItemId();
-
-                if (i == R.id.action_attach) {
-
-                } else if (i == R.id.action_mic) {
-
+                if (TelegramPanel.this.mListener != null) {
+                    if (item.getItemId() == R.id.action_attach) {
+                        TelegramPanel.this.mListener.onAttachClicked();
+                    } else if (item.getItemId() == R.id.action_mic) {
+                        if (TelegramPanel.this.mInput.getText().toString().equals("")) {
+                            TelegramPanel.this.mListener.onMicClicked();
+                        } else {
+                            TelegramPanel.this.mListener.onSendClicked();
+                        }
+                    }
+                    return Boolean.TRUE;
                 }
-                return Boolean.TRUE;
+                return Boolean.FALSE;
             }
         });
-
     }
 
     private void setInputConfig() {
@@ -125,7 +131,7 @@ public class TelegramPanel {
                 if (!TelegramPanel.this.mInput.getText().toString().equals("")) {
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(0).scaleY(0).setDuration(150).start();
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).start();
-                    micButton.setIcon(R.drawable.ic_send);
+                    micButton.setIcon(R.drawable.ic_send_telegram);
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
 
                 } else {
@@ -172,5 +178,18 @@ public class TelegramPanel {
         TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         TelegramPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
         TelegramPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
+    }
+
+    //GETTER AND SETTERS
+    public void setListener(TelegramPanelEventListener mListener) {
+        this.mListener = mListener;
+    }
+
+    public String getText() {
+        return this.mInput.getText().toString();
+    }
+
+    public void setText(String text) {
+        this.mInput.setText(text);
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="ActivitySearchEditText">
+    <style name="TelegramEditText">
         <item name="colorControlNormal">
             @color/rsc_bottom_panel_accent
         </item>
@@ -17,6 +17,25 @@
         <item name="android:textColor">#000</item>
         <item name="android:backgroundTint">
             @color/rsc_bottom_panel_bkg
+        </item>
+    </style>
+
+    <style name="WhatsAppEditText">
+        <item name="colorControlNormal">
+            @color/rsc_bottom_panel_accent
+        </item>
+        <item name="colorControlActivated">
+            @color/rsc_bottom_panel_accent
+        </item>
+        <item name="colorControlHighlight">
+            @color/rsc_bottom_panel_accent
+        </item>
+        <item name="android:textColorHint">
+            @color/rsc_bottom_panel_accent
+        </item>
+        <item name="android:textColor">#000</item>
+        <item name="android:backgroundTint">
+            #FFF
         </item>
     </style>
 </resources>

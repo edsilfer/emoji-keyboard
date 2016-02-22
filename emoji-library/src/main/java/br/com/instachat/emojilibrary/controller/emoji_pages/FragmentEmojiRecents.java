@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.controller.emoji_pages;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.com.instachat.emojilibrary.R;
+import br.com.instachat.emojilibrary.controller.FragmentEmoji;
 
 /**
  * Created by edgar on 18/02/2016.

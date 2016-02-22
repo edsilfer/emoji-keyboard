@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dip">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/balloon_incoming_normal">
+
+        <com.rockerhieu.emojicon.text_manager.EmojiconTextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="17dip"
+            android:layout_marginLeft="10dip"
+            android:autoLink="web"
+            android:text="Rahul Agrawal is a good boy but he does not know what he wants."/>
+
+        <TextView
+            android:id="@+id/timestamp"
+            style="@style/chat_timings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginLeft="10dip"
+            android:padding="8dp"
+            android:text="11:15 PM"/>
+
+
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_toogle"
+        android:icon="@drawable/ic_swap_horizontal_white_24dp"
+        android:orderInCategory="2"
+        android:title="@string/menu_action_toogle_activity"
+        app:showAsAction="always"/>
+</menu>

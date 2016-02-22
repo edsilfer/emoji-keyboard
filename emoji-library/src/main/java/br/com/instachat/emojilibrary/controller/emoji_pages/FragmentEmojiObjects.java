@@ -1,7 +1,8 @@
-package br.com.instachat.emojilibrary.controller;
+package br.com.instachat.emojilibrary.controller.emoji_pages;
 
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,46 +10,49 @@ import android.widget.GridView;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
+import br.com.instachat.emojilibrary.controller.FragmentEmoji;
 import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.People;
-import br.com.instachat.emojilibrary.util.Constants;
+import br.com.instachat.emojilibrary.model.Objects;
+import br.com.instachat.emojilibrary.model.Places;
+
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiPeople extends FragmentEmoji {
+public class FragmentEmojiObjects extends FragmentEmoji {
 
-    public static final String TAG = "FragmentEmojiPeople";
+    public static final String TAG = "FragmentEmojiObjects";
 
     private View mRootView;
     private Emoji[] mData;
     private boolean mUseSystemDefault = false;
 
+    private static final String USE_SYSTEM_DEFAULT_KEY = "useSystemDefaults";
+    private static final String EMOJI_KEY = "emojic";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        this.mRootView = inflater.inflate(R.layout.frag_emoji_people, container, false);
+        this.mRootView = inflater.inflate(R.layout.frag_emoji_objects, container, false);
         return this.mRootView;
+
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         GridView gridView = (GridView) view.findViewById(R.id.Emoji_GridView);
         Bundle bundle = getArguments();
-
         if (bundle == null) {
-            this.mData = People.DATA;
-            this.mUseSystemDefault = false;
+            mData = Objects.DATA;
+            mUseSystemDefault = false;
         } else {
-            Parcelable[] parcels = bundle.getParcelableArray(Constants.EMOJI_KEY);
-            this.mData = new Emoji[parcels.length];
-
+            Parcelable[] parcels = bundle.getParcelableArray(EMOJI_KEY);
+            mData = new Emoji[parcels.length];
             for (int i = 0; i < parcels.length; i++) {
-                this.mData[i] = (Emoji) parcels[i];
+                mData[i] = (Emoji) parcels[i];
             }
-
-            this.mUseSystemDefault = bundle.getBoolean(Constants.USE_SYSTEM_DEFAULT_KEY);
+            mUseSystemDefault = bundle.getBoolean(USE_SYSTEM_DEFAULT_KEY);
         }
-        gridView.setAdapter(new EmojiAdapter(view.getContext(), this.mData, this.mUseSystemDefault));
+        gridView.setAdapter(new EmojiAdapter(view.getContext(), mData, mUseSystemDefault));
         gridView.setOnItemClickListener(this);
     }
 }
