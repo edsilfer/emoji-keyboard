@@ -27,6 +27,7 @@ public class WhatsAppPanel {
     private EmojiKeyboard mEmojiKeyboard;
     private ImageView mEmojiButton;
     private ImageButton mSend;
+    private LinearLayout mCurtain;
     private WhatsAppPanelEventListener mListener;
 
     private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
@@ -44,10 +45,11 @@ public class WhatsAppPanel {
     // INITIALIZATION
     private void initBottomPanel() {
         this.mEmojiButton = (ImageView) this.mActivity.findViewById(R.id.emojiButton);
-        this.mEmojiButton.setOnClickListener(new View.OnClickListener() {
+        this.mActivity.findViewById(R.id.emojiButtonWrapper).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
+                    WhatsAppPanel.this.closeCurtain();
                     if (WhatsAppPanel.this.mInput.isSoftKeyboardVisible()) {
                         WhatsAppPanel.this.mEmojiButton.setImageResource(R.drawable.ic_keyboard_grey600_24dp);
                         WhatsAppPanel.this.mInput.hideSoftKeyboard();
@@ -57,6 +59,7 @@ public class WhatsAppPanel {
                     }
                 } else {
                     WhatsAppPanel.this.mEmojiButton.setImageResource(R.drawable.ic_keyboard_grey600_24dp);
+                    WhatsAppPanel.this.closeCurtain();
                     WhatsAppPanel.this.showEmojiKeyboard(0);
                 }
             }
@@ -70,6 +73,7 @@ public class WhatsAppPanel {
                 }
             }
         });
+        this.mCurtain = (LinearLayout) this.mActivity.findViewById(R.id.curtain);
     }
 
     private void setInputConfig() {
@@ -86,6 +90,7 @@ public class WhatsAppPanel {
                             Runnable myRunnable = new Runnable() {
                                 @Override
                                 public void run() {
+                                    WhatsAppPanel.this.openCurtain();
                                     WhatsAppPanel.this.showEmojiKeyboard(0);
                                 }
                             };
@@ -98,7 +103,8 @@ public class WhatsAppPanel {
             @Override
             public void onSoftKeyboardHidden() {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
-                    WhatsAppPanel.this.hideEmojiKeyboard();
+                    WhatsAppPanel.this.closeCurtain();
+                    WhatsAppPanel.this.hideEmojiKeyboard(200);
                 }
             }
         });
@@ -109,7 +115,7 @@ public class WhatsAppPanel {
             @Override
             public void onBackPressed() {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
-                    WhatsAppPanel.this.hideEmojiKeyboard();
+                    WhatsAppPanel.this.hideEmojiKeyboard(0);
                 } else {
                     WhatsAppPanel.this.mActivity.onBackPressed();
                 }
@@ -129,10 +135,25 @@ public class WhatsAppPanel {
         WhatsAppPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.VISIBLE);
     }
 
-    private void hideEmojiKeyboard() {
+    private void hideEmojiKeyboard(int delay) {
+        if (delay > 0) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         WhatsAppPanel.this.mEmojiButton.setImageResource(R.drawable.input_emoji);
         WhatsAppPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
         WhatsAppPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
+    }
+
+    private void openCurtain() {
+        this.mCurtain.setVisibility(LinearLayout.VISIBLE);
+    }
+
+    private void closeCurtain() {
+        this.mCurtain.setVisibility(LinearLayout.INVISIBLE);
     }
 
     // GETTERS AND SETTERS

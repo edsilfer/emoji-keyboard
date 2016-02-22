@@ -30,6 +30,8 @@ public class TelegramPanel {
     private EmojiEditText mInput;
     private EmojiKeyboard mEmojiKeyboard;
     private TelegramPanelEventListener mListener;
+    private LinearLayout mCurtain;
+    private Boolean mToogleIcon = Boolean.TRUE;
 
     private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
 
@@ -48,12 +50,13 @@ public class TelegramPanel {
         this.mBottomPanel = (Toolbar) this.mActivity.findViewById(R.id.panel);
         this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         this.mBottomPanel.setTitleTextColor(0xFFFFFFFF);
-        this.mBottomPanel.inflateMenu(R.menu.rsc_bottom_panel_menu);
+        this.mBottomPanel.inflateMenu(R.menu.telegram_menu);
 
         this.mBottomPanel.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
+                    TelegramPanel.this.closeCurtain();
                     if (TelegramPanel.this.mInput.isSoftKeyboardVisible()) {
                         TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
                         TelegramPanel.this.mInput.hideSoftKeyboard();
@@ -63,6 +66,7 @@ public class TelegramPanel {
                     }
                 } else {
                     TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
+                    TelegramPanel.this.closeCurtain();
                     TelegramPanel.this.showEmojiKeyboard(0);
                 }
             }
@@ -86,6 +90,8 @@ public class TelegramPanel {
                 return Boolean.FALSE;
             }
         });
+
+        this.mCurtain = (LinearLayout) this.mActivity.findViewById(R.id.curtain);
     }
 
     private void setInputConfig() {
@@ -102,6 +108,7 @@ public class TelegramPanel {
                             Runnable myRunnable = new Runnable() {
                                 @Override
                                 public void run() {
+                                    TelegramPanel.this.openCurtain();
                                     TelegramPanel.this.showEmojiKeyboard(0);
                                 }
                             };
@@ -114,7 +121,8 @@ public class TelegramPanel {
             @Override
             public void onSoftKeyboardHidden() {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
-                    TelegramPanel.this.hideEmojiKeyboard();
+                    TelegramPanel.this.closeCurtain();
+                    TelegramPanel.this.hideEmojiKeyboard(200);
                 }
             }
         });
@@ -128,7 +136,8 @@ public class TelegramPanel {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 final MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
-                if (!TelegramPanel.this.mInput.getText().toString().equals("") && (TelegramPanel.this.mInput.getText().toString().length() == 1)) {
+                if (!TelegramPanel.this.mInput.getText().toString().equals("") && TelegramPanel.this.mToogleIcon) {
+                    TelegramPanel.this.mToogleIcon = Boolean.FALSE;
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(0).scaleY(0).setDuration(150).start();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
@@ -140,6 +149,7 @@ public class TelegramPanel {
                         }).start();
                     }
                 } else if (TelegramPanel.this.mInput.getText().toString().equals("")) {
+                    TelegramPanel.this.mToogleIcon = Boolean.TRUE;
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(1).scaleY(1).setDuration(150).start();
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
@@ -165,7 +175,7 @@ public class TelegramPanel {
             @Override
             public void onBackPressed() {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
-                    TelegramPanel.this.hideEmojiKeyboard();
+                    TelegramPanel.this.hideEmojiKeyboard(0);
                 } else {
                     TelegramPanel.this.mActivity.onBackPressed();
                 }
@@ -185,10 +195,25 @@ public class TelegramPanel {
         TelegramPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.VISIBLE);
     }
 
-    private void hideEmojiKeyboard() {
+    private void hideEmojiKeyboard(int delay) {
+        if (delay > 0) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         TelegramPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
         TelegramPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
+    }
+
+    private void openCurtain() {
+        this.mCurtain.setVisibility(LinearLayout.VISIBLE);
+    }
+
+    private void closeCurtain() {
+        this.mCurtain.setVisibility(LinearLayout.INVISIBLE);
     }
 
     //GETTER AND SETTERS

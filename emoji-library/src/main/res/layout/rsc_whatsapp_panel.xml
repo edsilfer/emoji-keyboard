@@ -29,6 +29,7 @@
             android:paddingRight="20dp">
 
             <LinearLayout
+                android:id="@+id/emojiButtonWrapper"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"

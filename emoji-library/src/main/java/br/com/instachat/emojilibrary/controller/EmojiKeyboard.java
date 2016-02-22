@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 
@@ -27,7 +28,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     private EmojiCompatActivity mActivity;
 
     private ImageView[] mTabIcons = new ImageView[6];
-    private LinearLayout mEmojiKeyboardLayout;
+    private RelativeLayout mEmojiKeyboardLayout;
     private EmojiEditText mInput;
     private ImageView mBackspace;
 
@@ -35,7 +36,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     public EmojiKeyboard(EmojiCompatActivity activity, EmojiEditText input) {
         this.mInput = input;
         this.mActivity = activity;
-        this.mEmojiKeyboardLayout = (LinearLayout) this.mActivity.findViewById(R.id.emoji_keyboard);
+        this.mEmojiKeyboardLayout = (RelativeLayout) this.mActivity.findViewById(R.id.emoji_keyboard);
         this.initEmojiKeyboardViewPager();
         this.setBackspaceBehaviour();
     }
@@ -165,7 +166,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     }
 
     //GETTERS AND SETTERS
-    public LinearLayout getEmojiKeyboardLayout() {
+    public RelativeLayout getEmojiKeyboardLayout() {
         return mEmojiKeyboardLayout;
     }
 

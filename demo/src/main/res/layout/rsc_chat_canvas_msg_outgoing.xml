@@ -22,8 +22,9 @@
             android:layout_marginBottom="25dip"
             android:layout_marginLeft="15dip"
             android:layout_marginRight="15dip"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="5dip"
             android:autoLink="web"
+            android:textSize="16dip"
             android:text="Rahul Agrawal is a good boy but he does not know what he wants."
             app:emojiSize="23dip"/>
 
