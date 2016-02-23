@@ -15,8 +15,8 @@ A library to provide an emoji-keyboard implementation for Android applications
 * "Leonardo Assunção" <leo.assuncao92@gmail.com>
 
 # <a name="references"></a>References
-* <a name="REF4"></a>[REF1] - https://github.com/rockerhieu/emojicon
-* <a name="REF5"></a>[REF2] - https://github.com/DrKLO/Telegram
-* <a name="REF6"></a>[REF3] - https://github.com/ogaclejapan/SmartTabLayout
-* <a name="REF7"></a>[REF4] - https://github.com/lopspower/CircularImageView
-* <a name="REF8"></a>[REF5] - https://github.com/square/picasso
+* <a name="REF1"></a>[REF1] - https://github.com/rockerhieu/emojicon
+* <a name="REF2"></a>[REF2] - https://github.com/DrKLO/Telegram
+* <a name="REF3"></a>[REF3] - https://github.com/ogaclejapan/SmartTabLayout
+* <a name="REF4"></a>[REF4] - https://github.com/lopspower/CircularImageView
+* <a name="REF5"></a>[REF5] - https://github.com/square/picasso
