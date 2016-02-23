@@ -1,13 +1,22 @@
 package br.com.instachat.emojikeyboard.controller;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -19,6 +28,7 @@ import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.WhatsAppPanel;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.WhatsAppPanelEventListener;
+import br.com.instachat.emojilibrary.util.App;
 
 
 /**
@@ -29,6 +39,8 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
     public static final String TAG = "ActivityWhatsApp";
 
     private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
+
     private WhatsAppPanel mBottomPanel;
     private RecyclerView mMessages;
     private MessageAdapter mAdapter;
@@ -39,6 +51,7 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_whatsapp);
         this.initToolbar();
+        this.initDrawerMenu();
         this.initMessageList();
         this.setWhatsAppTheme();
         this.mBottomPanel = new WhatsAppPanel(this, this);
@@ -56,12 +69,68 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
         switch (item.getItemId()) {
             case R.id.action_toogle:
                 ActivityWhatsApp.this.finish();
+                Intent intent = new Intent(ActivityWhatsApp.this, ActivityTelegram.class);
+                ActivityWhatsApp.this.startActivity(intent);
+                ActivityWhatsApp.this.finish();
+                break;
+            case android.R.id.home:
+                if (this.mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    this.mDrawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    this.mDrawerLayout.openDrawer(GravityCompat.START);
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     // INITIALIZATIONS
+    private void initDrawerMenu() {
+        this.mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        this.findViewById(R.id.github_thumbnail);
+
+        CircularImageView thumbnail = (CircularImageView) this.findViewById(R.id.github_thumbnail);
+
+        Picasso.with(App.context())
+                .load(R.drawable.github)
+                .resize(60, 60)
+                .centerCrop()
+                .into(thumbnail);
+
+        thumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/instachat/emoji-library"));
+                startActivity(browserIntent);
+            }
+        });
+
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                this.mDrawerLayout,
+                ActivityWhatsApp.this.mToolbar,
+                R.string.drawer_open,
+                R.string.drawer_close
+        )
+
+        {
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                invalidateOptionsMenu();
+                syncState();
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                invalidateOptionsMenu();
+                syncState();
+            }
+        };
+
+        this.mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+    }
+
     private void initMessageList() {
         this.mMessages = (RecyclerView) this.findViewById(R.id.messages);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

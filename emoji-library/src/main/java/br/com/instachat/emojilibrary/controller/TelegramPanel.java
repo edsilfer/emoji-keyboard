@@ -173,12 +173,13 @@ public class TelegramPanel {
     private void setOnBackPressed() {
         this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
             @Override
-            public void onBackPressed() {
+            public Boolean onBackPressed() {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
+                    TelegramPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
                     TelegramPanel.this.hideEmojiKeyboard(0);
-                } else {
-                    TelegramPanel.this.mActivity.onBackPressed();
+                    return Boolean.TRUE;
                 }
+                return Boolean.FALSE;
             }
         });
     }

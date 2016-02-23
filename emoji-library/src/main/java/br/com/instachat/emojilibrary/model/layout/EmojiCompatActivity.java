@@ -12,7 +12,11 @@ public class EmojiCompatActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (this.mOnBackPressed != null) {
-            this.mOnBackPressed.onBackPressed();
+            if (!this.mOnBackPressed.onBackPressed()) {
+                super.onBackPressed();
+            }
+        } else {
+            super.onBackPressed();
         }
     }
 
@@ -21,6 +25,6 @@ public class EmojiCompatActivity extends AppCompatActivity {
     }
 
     public interface OnBackPressed {
-        public void onBackPressed();
+        Boolean onBackPressed();
     }
 }

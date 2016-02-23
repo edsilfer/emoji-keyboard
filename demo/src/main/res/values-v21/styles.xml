@@ -8,6 +8,7 @@
             @color/colorPrimaryDarkTelegram
         </item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     </style>
 
     <style name="chat_timings">
@@ -17,4 +18,8 @@
         <item name="android:textColor">#a6abad</item>
     </style>
 
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
 </resources>

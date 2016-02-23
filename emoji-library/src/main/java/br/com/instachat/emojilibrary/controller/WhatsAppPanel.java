@@ -113,12 +113,15 @@ public class WhatsAppPanel {
     private void setOnBackPressed() {
         this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
             @Override
-            public void onBackPressed() {
+            public Boolean onBackPressed() {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
+                    WhatsAppPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
                     WhatsAppPanel.this.hideEmojiKeyboard(0);
+                    return Boolean.TRUE;
                 } else {
-                    WhatsAppPanel.this.mActivity.onBackPressed();
+
                 }
+                return Boolean.FALSE;
             }
         });
     }
