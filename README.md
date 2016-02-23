@@ -4,10 +4,10 @@ A library to provide an emoji-keyboard implementation for Android applications
 # <a name="showcase"></a>Showcase
 
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
-* [Rockerhieu / emojicon](REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
-* [DrKLO / Telegram](REF2): _Telegram is a messaging app with a focus on speed and security. It’s superfast, simple and free. This repo contains the official source code for Telegram App for Android;_
-* [ogaclejapan/ SmartTabLayout](REF3): _A custom ViewPager title strip which gives continuous feedback to the user when scrolling;_
-* [lopspower / CircularImageView](REF4): _This is an Android project allowing to realize a circular ImageView in the simplest way possible;_
+* [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
+* [DrKLO / Telegram](#REF2): _Telegram is a messaging app with a focus on speed and security. It’s superfast, simple and free. This repo contains the official source code for Telegram App for Android;_
+* [ogaclejapan/ SmartTabLayout](#REF3): _A custom ViewPager title strip which gives continuous feedback to the user when scrolling;_
+* [lopspower / CircularImageView](#REF4): _This is an Android project allowing to realize a circular ImageView in the simplest way possible;_
 * [square / picasso](#REF5): _A powerful image downloading and caching library for Android;_
 
 # <a name="team-members"></a>Team Members
