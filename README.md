@@ -2,6 +2,9 @@
 A library to provide an emoji-keyboard implementation for Android applications
 
 # <a name="showcase"></a>Showcase
+<p align="center">
+<img src="showcase/telegram.gif" align="center">
+</p>
 
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
 * [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
