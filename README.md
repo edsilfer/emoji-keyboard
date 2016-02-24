@@ -3,7 +3,8 @@ A library to provide an emoji-keyboard implementation for Android applications
 
 # <a name="showcase"></a>Showcase
 <p align="center">
-<img src="showcase/telegram.gif" align="center">
+<img src="showcase/telegram.gif" align="center"  hspace="50">
+<img src="showcase/emojilayout.gif" align="center" hspace="50">
 <img src="showcase/whatsapp.gif" align="center" hspace="50">
 </p>
 
