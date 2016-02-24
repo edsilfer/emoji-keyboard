@@ -32,6 +32,6 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <include layout="@layout/rcs_emoji_keyboard"/>
+    <include layout="@layout/rsc_emoji_keyboard"/>
 
 </android.support.design.widget.AppBarLayout>

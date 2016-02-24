@@ -64,5 +64,5 @@
             android:src="@drawable/ic_send_whatsapp"/>
     </LinearLayout>
 
-    <include layout="@layout/rcs_emoji_keyboard"/>
+    <include layout="@layout/rsc_emoji_keyboard"/>
 </LinearLayout>

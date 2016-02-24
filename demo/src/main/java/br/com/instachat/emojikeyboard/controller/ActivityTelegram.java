@@ -28,8 +28,8 @@ import br.com.instachat.emojikeyboard.model.Message;
 import br.com.instachat.emojikeyboard.model.MessageType;
 import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.TelegramPanel;
-import br.com.instachat.emojilibrary.model.TelegramPanelEventListener;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
 import br.com.instachat.emojilibrary.util.App;
 
 

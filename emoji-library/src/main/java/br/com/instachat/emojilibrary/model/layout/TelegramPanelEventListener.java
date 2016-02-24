@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.model;
+package br.com.instachat.emojilibrary.model.layout;
 
 /**
  * Created by edgar on 21/02/2016.

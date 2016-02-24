@@ -14,7 +14,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.model.TelegramPanelEventListener;
+import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
 
