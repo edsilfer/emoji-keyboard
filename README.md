@@ -41,6 +41,8 @@ prepareKeyboard(EmojiCompatActivity activity, EmojiEditText input)
 // CODE
 ```
 
+_P.S: Further details about how add the Telegram or Whats App bar - both provived by its library - please, visit our [wiki page](#https://github.com/instachat/emoji-library/wiki)_
+
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
 * [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
 * [DrKLO / Telegram](#REF2): _Telegram is a messaging app with a focus on speed and security. It’s superfast, simple and free. This repo contains the official source code for Telegram App for Android;_
@@ -51,6 +53,22 @@ prepareKeyboard(EmojiCompatActivity activity, EmojiEditText input)
 # <a name="team-members"></a>Team Members
 * "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
 * "Leonardo Assunção" <leo.assuncao92@gmail.com>
+
+# <a name="license"></a>License
+Copyright 2015 Edgar da Silva Fernandes | Leonardo Assunção
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. 
+
 
 # <a name="references"></a>References
 * <a name="REF1"></a>[REF1] - https://github.com/rockerhieu/emojicon
