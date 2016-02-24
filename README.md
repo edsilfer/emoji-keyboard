@@ -4,8 +4,42 @@ A library to provide an emoji-keyboard implementation for Android applications
 # <a name="showcase"></a>Showcase
 <p align="center">
 <img src="showcase/telegram.gif" align="center">
-<img src="showcase/whatsapp.gif" align="center">
+<img src="showcase/whatsapp.gif" align="center" hspace="50">
 </p>
+
+#Quicky Setup
+A code worths more than... well, nevermind.
+
+```
+dependencies {
+    compile 'br.com.instachat:emoji-library:0.0.1'
+}
+```
+
+```xml
+<br.com.instachat.emojilibrary.model.layout.EmojiKeyboardLayout
+    android:layout_width="match_parent"
+    android:layout_height="263dip"/>
+```
+
+```xml
+<br.com.instachat.emojilibrary.model.layout.EmojiEditText
+    android:id="@+id/input"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Message"
+    android:singleLine="true"
+    android:textColor="@color/rsc_bottom_panel_accent"
+    android:textSize="18dip"
+    android:theme="@style/TelegramEditText"
+    app:emojiSize="25dip"/>
+```
+
+```java
+// Activity must descent from EmojiCompatActivity
+prepareKeyboard(EmojiCompatActivity activity, EmojiEditText input)
+// CODE
+```
 
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
 * [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
