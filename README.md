@@ -41,7 +41,7 @@ prepareKeyboard(EmojiCompatActivity activity, EmojiEditText input)
 // CODE
 ```
 
-_P.S: Further details about how add the Telegram or Whats App bar - both provived by its library - please, visit our [wiki page](#https://github.com/instachat/emoji-library/wiki)_
+_P.S: Further details about how add the Telegram or Whats App bar - both provived by its library - please, visit our [wiki page](https://github.com/instachat/emoji-library/wiki)_
 
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
 * [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
