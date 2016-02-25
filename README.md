@@ -1,7 +1,6 @@
-[ ![Download](https://api.bintray.com/packages/edsilfer/maven/emoji-library/images/download.svg) ](https://bintray.com/edsilfer/maven/emoji-library/0.0.1)
-
 # Android Emoji Keyboard
 A library to provide an emoji-keyboard implementation for Android applications
+[ ![Download](https://api.bintray.com/packages/edsilfer/maven/emoji-library/images/download.svg) ](https://bintray.com/edsilfer/maven/emoji-library/0.0.1)
 
 # <a name="showcase"></a>Showcase
 <p align="center">
