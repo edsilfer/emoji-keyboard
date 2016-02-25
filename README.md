@@ -1,7 +1,7 @@
 # Android Emoji Keyboard
 A library to provide an emoji-keyboard implementation for Android applications
 
-[ ![Download](https://api.bintray.com/packages/edsilfer/maven/emoji-library/images/download.svg) ](https://bintray.com/edsilfer/maven/emoji-library/0.0.1)
+[ ![Download](https://api.bintray.com/packages/edsilfer/maven/emoji-library/images/download.svg) ](https://bintray.com/edsilfer/maven/emoji-library/_latestVersion)
 
 # <a name="showcase"></a>Showcase
 <p align="center">
@@ -15,7 +15,7 @@ A code worths more than... well, nevermind.
 
 ```
 dependencies {
-    compile 'br.com.instachat:emoji-library:0.0.1'
+    compile 'br.com.instachat:emoji-library:0.0.2'
 }
 ```
 
