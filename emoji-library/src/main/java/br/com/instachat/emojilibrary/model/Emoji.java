@@ -3,20 +3,26 @@ package br.com.instachat.emojilibrary.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
+
+import java.sql.Timestamp;
+
 /**
  * Created by Leonardo Assunção on 18/02/2016.
  */
-public class Emoji implements Parcelable {
+public class Emoji extends SugarRecord implements Parcelable {
 
     public static final String TAG = "Emoji";
 
     private int icon;
+    @Ignore
     private char value;
     private String emoji;
+    private Timestamp timestamp;
 
     // CONSTRUCTORS
-
-    private Emoji() {
+    public Emoji() {
     }
 
     public Emoji(int icon, char value, String emoji) {
@@ -67,6 +73,14 @@ public class Emoji implements Parcelable {
         } else {
             return new String(Character.toChars(codePoint));
         }
+    }
+
+    public Timestamp getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

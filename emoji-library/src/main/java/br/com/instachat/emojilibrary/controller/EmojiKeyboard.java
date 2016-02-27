@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
@@ -43,10 +42,10 @@ public class EmojiKeyboard implements OnEmojiClickListener {
 
     // INTIALIZATIONS
     private void initEmojiKeyboardViewPager() {
-        EmojiTabAdapter adapter = new EmojiTabAdapter(this.mActivity.getSupportFragmentManager());
+        final EmojiTabAdapter adapter = new EmojiTabAdapter(this.mActivity.getSupportFragmentManager());
         adapter.setOnEmojiClickListener(this);
 
-        ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.emoji_viewpager);
+        final ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.emoji_viewpager);
         viewPager.setAdapter(adapter);
 
         final SmartTabLayout viewPagerTab = (SmartTabLayout) this.mActivity.findViewById(R.id.emoji_tabs);

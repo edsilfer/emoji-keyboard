@@ -87,4 +87,8 @@ public class EmojiTabAdapter extends FragmentPagerAdapter {
         EmojiTabAdapter.FRAGMENT_EMOJI_PLACES.addEmojiconClickListener(listener);
         EmojiTabAdapter.FRAGMENT_EMOJI_SYMBOLS.addEmojiconClickListener(listener);
     }
+
+    public static FragmentEmojiRecents getFragmentEmojiRecents() {
+        return FRAGMENT_EMOJI_RECENTS;
+    }
 }

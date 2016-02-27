@@ -175,6 +175,7 @@ public class ActivityTelegram extends EmojiCompatActivity implements TelegramPan
 
     @Override
     public void onSendClicked() {
+        Log.i(TAG, "message: " + this.mBottomPanel.getText());
         Message message = new Message();
         message.setType(MessageType.OUTGOING);
         message.setTimestamp(TimestampUtil.getCurrentTimestamp());

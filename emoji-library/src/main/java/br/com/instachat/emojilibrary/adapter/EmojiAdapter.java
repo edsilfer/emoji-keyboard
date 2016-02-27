@@ -37,6 +37,7 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
         this.mUseSystemDefault = useSystemDefault;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;

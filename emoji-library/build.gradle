@@ -6,56 +6,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 group = 'br.com.instachat'
-version = '0.0.1'
-
-bintray {
-    user = properties.getProperty('bintray.user')
-    key = properties.getProperty('bintray.apikey')
-
-    configurations = ['published', 'archives']
-
-    dryRun = false
-    publish = true
-
-    pkg {
-        repo = 'maven'
-        name = 'emoji-library'
-
-        desc = 'A library to provide an emoji-keyboard implementation for Android applications.'
-
-        websiteUrl = 'https://github.com/instachat/emoji-library'
-        issueTrackerUrl = 'https://github.com/instachat/emoji-library/issues'
-        vcsUrl = 'https://github.com/instachat/emoji-library.git'
-
-        licenses = ['The Apache Software License, Version 2.0']
-        labels = ['android', 'searchable', 'interface', 'layout']
-        publicDownloadNumbers = true
-    }
-}
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'emoji-library'
-
-    publishedGroupId = 'br.com.instachat'
-    libraryName = 'emoji-library'
-    artifact = 'emoji-library'
-
-    libraryDescription = 'A library to provide an emoji-keyboard implementation for Android applications.'
-
-    siteUrl = 'https://github.com/instachat/emoji-library'
-    gitUrl = 'https://github.com/instachat/emoji-library.git'
-
-    libraryVersion = '0.0.1'
-
-    developerId = 'edsilfer'
-    developerName = 'Fernandes S Edgar'
-    developerEmail = 'fernandes.s.edgar@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
+version = '0.0.2'
 
 android {
     compileSdkVersion 23
@@ -79,10 +30,59 @@ android {
     }
 }
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'custom-searchable'
+
+    publishedGroupId = 'br.com.instachat'
+    libraryName = 'Android Emoji Library'
+    artifact = 'emoji-library'
+
+    libraryDescription = 'A library to provide an emoji-keyboard implementation for Android applications'
+    siteUrl = 'https://github.com/instachat/emoji-library'
+    gitUrl = 'https://github.com/instachat/emoji-library.git'
+
+    libraryVersion = '0.0.2'
+
+    developerId = 'edsilfer'
+    developerName = 'Edgar Fernandes'
+    developerEmail = 'fernandes.s.edgar@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
+
+bintray {
+    user = properties.getProperty('bintray.user')
+    key = properties.getProperty('bintray.apikey')
+
+    configurations = ['published', 'archives']
+
+    pkg {
+        repo = 'maven'
+        name = 'emoji-library'
+
+        desc = 'A library to provide an emoji-keyboard implementation for Android applications.'
+
+        websiteUrl = 'https://github.com/instachat/emoji-library'
+        issueTrackerUrl = 'https://github.com/instachat/emoji-library/issues'
+        vcsUrl = 'https://github.com/instachat/emoji-library.git'
+
+        licenses = ['The Apache Software License, Version 2.0']
+        labels = ['android', 'searchable', 'interface', 'layout']
+        publicDownloadNumbers = true
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:+'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
+    compile 'com.github.satyan:sugar:1.4'
 }
