@@ -2,6 +2,7 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,6 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     private void initEmojiKeyboardViewPager() {
         final EmojiTabAdapter adapter = new EmojiTabAdapter(this.mActivity.getSupportFragmentManager());
         adapter.setOnEmojiClickListener(this);
-
         final ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.emoji_viewpager);
         viewPager.setAdapter(adapter);
 
@@ -171,12 +171,15 @@ public class EmojiKeyboard implements OnEmojiClickListener {
 
     @Override
     public void onEmojiClicked(Emoji emojicon) {
+        Log.i(TAG, "I GOT INSIDE HERE");
         int start = this.mInput.getSelectionStart();
         int end = this.mInput.getSelectionEnd();
 
         if (start < 0) {
+            Log.i(TAG, "START < 0");
             this.mInput.append(emojicon.getEmoji());
         } else {
+            Log.i(TAG, "START > 0");
             this.mInput.getText().replace(Math.min(start, end), Math.max(start, end), emojicon.getEmoji(), 0, emojicon.getEmoji().length());
         }
     }

@@ -25,6 +25,11 @@ public class EmojiTabAdapter extends FragmentPagerAdapter {
     // CONTRACT
     public EmojiTabAdapter(FragmentManager fm) {
         super(fm);
+        EmojiTabAdapter.FRAGMENT_EMOJI_PEOPLE.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
+        EmojiTabAdapter.FRAGMENT_EMOJI_NATURE.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
+        EmojiTabAdapter.FRAGMENT_EMOJI_OBJECTS.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
+        EmojiTabAdapter.FRAGMENT_EMOJI_PLACES.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
+        EmojiTabAdapter.FRAGMENT_EMOJI_SYMBOLS.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
     }
 
     // CALLBACKS

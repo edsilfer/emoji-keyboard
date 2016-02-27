@@ -22,17 +22,7 @@ public final class EmojiUtil {
 
     private static final SparseIntArray mEmojisMap = new SparseIntArray(1029);
     private static final SparseIntArray mSoftbanksMap = new SparseIntArray(471);
-    private static final SparseIntArray sEmojiModifiersMap = new SparseIntArray(5);
     private static Map<String, Integer> sEmojisModifiedMap = new HashMap<>();
-    
-    //available emoji modifiers
-    static {
-        sEmojiModifiersMap.put(0x1f3fb, 1);
-        sEmojiModifiersMap.put(0x1f3fc, 1);
-        sEmojiModifiersMap.put(0x1f3fd, 1);
-        sEmojiModifiersMap.put(0x1f3fe, 1);
-        sEmojiModifiersMap.put(0x1f3ff, 1);
-    }
 
 
     // CONSTRUCTOR
@@ -185,17 +175,16 @@ public final class EmojiUtil {
                         }
                         skip += followSkip;
 
-                    }else if(sEmojiModifiersMap.get(followUnicode, 0) > 0){
+                    } else {
                         //handle other emoji modifiers
                         int followSkip = Character.charCount(followUnicode);
-                        
-                        
+
                         //TODO seems like we could do this for every emoji type rather than having that giant static map, maybe this is too slow?
                         String hexUnicode = Integer.toHexString(unicode);
                         String hexFollowUnicode = Integer.toHexString(followUnicode);
-                        
+
                         String resourceName = "emoji_" + hexUnicode + "_" + hexFollowUnicode;
-                        
+
                         int resourceId = 0;
                         if (sEmojisModifiedMap.containsKey(resourceName)) {
                             resourceId = sEmojisModifiedMap.get(resourceName);
@@ -205,15 +194,12 @@ public final class EmojiUtil {
                                 sEmojisModifiedMap.put(resourceName, resourceId);
                             }
                         }
-                        
+
                         if (resourceId == 0) {
                             followSkip = 0;
                         } else {
                             icon = resourceId;
                         }
-                        skip += followSkip;
-                    }else{
-                        int followSkip = Character.charCount(followUnicode);
                         skip += followSkip;
                     }
                 }

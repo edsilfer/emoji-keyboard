@@ -6,7 +6,6 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.List;
@@ -20,7 +19,7 @@ import br.com.instachat.emojilibrary.util.Constants;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class FragmentEmojiRecents extends FragmentEmoji {
+public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji.RecentListener {
 
     public static final String TAG = "FragmentEmojiRecents";
 
@@ -57,12 +56,6 @@ public class FragmentEmojiRecents extends FragmentEmoji {
         this.mGridView.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        super.onItemClick(parent, view, position, id);
-        this.updateRecentsEmojis();
-    }
-
     private Emoji[] getRecentsEmojis() {
         List<Emoji> aux = Emoji.findWithQuery(Emoji.class, "SELECT * FROM Emoji ORDER BY timestamp DESC LIMIT 24");
         Emoji[] result = new Emoji[aux.size()];
@@ -74,9 +67,9 @@ public class FragmentEmojiRecents extends FragmentEmoji {
         return result;
     }
 
-    public void updateRecentsEmojis() {
+    @Override
+    public void notifyEmojiAdded() {
         new AsyncTask<Void, Void, Emoji[]>() {
-
             @Override
             protected void onPostExecute(Emoji[] emojis) {
                 FragmentEmojiRecents.this.mGridView.setAdapter(new EmojiAdapter(FragmentEmojiRecents.this.mRootView.getContext(), emojis, FragmentEmojiRecents.this.mUseSystemDefault));
@@ -88,5 +81,4 @@ public class FragmentEmojiRecents extends FragmentEmoji {
             }
         }.execute();
     }
-
 }

@@ -2,7 +2,6 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +21,7 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
 
     public static final String TAG = "FragmentEmoji";
 
+    private RecentListener mRecentListener;
     private OnEmojiClickListener mOnEmojiconClickedListener;
     private View mRootView;
 
@@ -35,6 +35,7 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (this.mOnEmojiconClickedListener != null) {
             final Emoji clickedEmoji = (Emoji) parent.getItemAtPosition(position);
+            this.mOnEmojiconClickedListener.onEmojiClicked(clickedEmoji);
             clickedEmoji.setTimestamp(TimestampUtil.getCurrentTimestamp());
 
             Runnable r = new Runnable() {
@@ -47,15 +48,24 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
                     } else if (aux == null || aux.size() == 0) {
                         Emoji.save(clickedEmoji);
                     }
+                    if (FragmentEmoji.this.mRecentListener != null) {
+                        FragmentEmoji.this.mRecentListener.notifyEmojiAdded();
+                    }
                 }
             };
             new Thread(r).start();
-
-            this.mOnEmojiconClickedListener.onEmojiClicked(clickedEmoji);
         }
     }
 
     public void addEmojiconClickListener(OnEmojiClickListener listener) {
         this.mOnEmojiconClickedListener = listener;
+    }
+
+    public void subscribeRecentListener(RecentListener listener) {
+        this.mRecentListener = listener;
+    }
+
+    public interface RecentListener {
+        public void notifyEmojiAdded();
     }
 }
