@@ -212,9 +212,6 @@ public final class EmojiUtil {
                             icon = resourceId;
                         }
                         skip += followSkip;
-                    }else{
-                        int followSkip = Character.charCount(followUnicode);
-                        skip += followSkip;
                     }
                 }
             }
