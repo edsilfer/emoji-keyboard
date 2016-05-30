@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ import br.com.instachat.emojikeyboard.model.Message;
 import br.com.instachat.emojikeyboard.model.MessageType;
 import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.TelegramPanel;
+import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
-import br.com.instachat.emojilibrary.util.App;
 
 
 /**
@@ -52,6 +53,7 @@ public class ActivityTelegram extends EmojiCompatActivity implements TelegramPan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_telegram);
+
         this.initToolbar();
         this.initDrawerMenu();
         this.setTelegramTheme();
@@ -92,7 +94,7 @@ public class ActivityTelegram extends EmojiCompatActivity implements TelegramPan
 
         CircularImageView thumbnail = (CircularImageView) this.findViewById(R.id.github_thumbnail);
 
-        Picasso.with(App.context())
+        Picasso.with(this)
                 .load(R.drawable.github)
                 .resize(60, 60)
                 .centerCrop()

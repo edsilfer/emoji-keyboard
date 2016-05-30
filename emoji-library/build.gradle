@@ -6,7 +6,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 group = 'br.com.instachat'
-version = '0.0.2'
+version = '1.0.4'
 
 android {
     compileSdkVersion 23
@@ -16,7 +16,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.4"
         multiDexEnabled true
     }
     dexOptions {
@@ -32,7 +32,7 @@ android {
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'custom-searchable'
+    bintrayName = 'emoji-library'
 
     publishedGroupId = 'br.com.instachat'
     libraryName = 'Android Emoji Library'
@@ -42,7 +42,7 @@ ext {
     siteUrl = 'https://github.com/instachat/emoji-library'
     gitUrl = 'https://github.com/instachat/emoji-library.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '1.0.4'
 
     developerId = 'edsilfer'
     developerName = 'Edgar Fernandes'
@@ -81,8 +81,9 @@ bintray {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:+'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:design:23.4.0'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.github.satyan:sugar:1.4'
+    compile 'com.github.satyan:sugar:1.5'
+    compile 'com.google.code.gson:gson:2.4'
 }

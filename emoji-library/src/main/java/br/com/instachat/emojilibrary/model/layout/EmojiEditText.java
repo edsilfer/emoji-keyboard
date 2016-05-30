@@ -112,13 +112,13 @@ public class EmojiEditText extends EditText {
     // SOFT KEYBOARD LISTENER
     public void showSoftKeyboard() {
         this.isSoftKeyboardVisible = Boolean.TRUE;
-        SoftKeyboardUtil.showSoftKeyboard(this);
+        SoftKeyboardUtil.showSoftKeyboard(this.mContext, this);
     }
 
     public void hideSoftKeyboard() {
         this.isSoftKeyboardVisible = Boolean.FALSE;
         this.clearFocus();
-        SoftKeyboardUtil.dismissSoftKeyboard(this);
+        SoftKeyboardUtil.dismissSoftKeyboard(this.mContext, this);
     }
 
     public interface OnSoftKeyboardListener {

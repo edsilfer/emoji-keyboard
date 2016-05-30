@@ -37,7 +37,6 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
         this.mUseSystemDefault = useSystemDefault;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
@@ -47,9 +46,11 @@ public class EmojiAdapter extends ArrayAdapter<Emoji> {
             view.setTag(new ViewHolder(view, this.mUseSystemDefault));
         }
 
-        Emoji emoji = this.getItem(position);
-        ViewHolder holder = (ViewHolder) view.getTag();
-        holder.icon.setText(emoji.getEmoji());
+        if (null != getItem(position)) {
+            Emoji emoji = this.getItem(position);
+            ViewHolder holder = (ViewHolder) view.getTag();
+            holder.icon.setText(emoji.getEmoji());
+        }
 
         return view;
     }

@@ -1,6 +1,8 @@
 package br.com.instachat.emojilibrary.controller;
 
+import android.content.res.ColorStateList;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,15 +28,17 @@ public class WhatsAppPanel {
     private EmojiEditText mInput;
     private EmojiKeyboard mEmojiKeyboard;
     private ImageView mEmojiButton;
-    private ImageButton mSend;
+    private FloatingActionButton mSend;
     private LinearLayout mCurtain;
     private WhatsAppPanelEventListener mListener;
+    private int mButtonColor;
 
     private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
 
     // CONSTRUCTOR
-    public WhatsAppPanel(EmojiCompatActivity activity, WhatsAppPanelEventListener listener) {
+    public WhatsAppPanel(EmojiCompatActivity activity, WhatsAppPanelEventListener listener, int color) {
         this.mActivity = activity;
+        this.mButtonColor = color;
         this.initBottomPanel();
         this.setInputConfig();
         this.setOnBackPressed();
@@ -44,8 +48,8 @@ public class WhatsAppPanel {
 
     // INITIALIZATION
     private void initBottomPanel() {
-        this.mEmojiButton = (ImageView) this.mActivity.findViewById(R.id.emojiButton);
-        this.mActivity.findViewById(R.id.emojiButtonWrapper).setOnClickListener(new View.OnClickListener() {
+        this.mEmojiButton = (ImageView) mActivity.findViewById(R.id.emojiButton);
+        mActivity.findViewById(R.id.emojiButtonWrapper).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
@@ -64,7 +68,7 @@ public class WhatsAppPanel {
                 }
             }
         });
-        this.mSend = (ImageButton) this.mActivity.findViewById(R.id.send);
+        this.mSend = (FloatingActionButton) mActivity.findViewById(R.id.send);
         this.mSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,11 +77,12 @@ public class WhatsAppPanel {
                 }
             }
         });
-        this.mCurtain = (LinearLayout) this.mActivity.findViewById(R.id.curtain);
+        this.mSend.setBackgroundTintList(ColorStateList.valueOf(mActivity.getResources().getColor(mButtonColor)));
+        this.mCurtain = (LinearLayout) mActivity.findViewById(R.id.curtain);
     }
 
     private void setInputConfig() {
-        this.mInput = (EmojiEditText) this.mActivity.findViewById(R.id.input);
+        this.mInput = (EmojiEditText) mActivity.findViewById(R.id.input);
         this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
             @Override
             public void onSoftKeyboardDisplay() {

@@ -16,8 +16,6 @@ public class EmojiCompatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SugarContext.init(this);
-        Emoji.findById(Emoji.class, 1L);
         super.onCreate(savedInstanceState);
     }
 

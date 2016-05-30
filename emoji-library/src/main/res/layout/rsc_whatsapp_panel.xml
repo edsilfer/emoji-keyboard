@@ -55,13 +55,19 @@
 
         </LinearLayout>
 
-        <ImageButton
+
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/send"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="bottom"
-            android:background="@drawable/send_bkg"
-            android:src="@drawable/ic_send_whatsapp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="2dip"
+            android:clickable="true"
+            android:src="@drawable/ic_send_whatsapp"
+            app:backgroundTint="@color/rsc_emoji_tab_indicator"
+            app:borderWidth="0dp"
+            app:elevation="2dp"/>
     </LinearLayout>
 
     <include layout="@layout/rsc_emoji_keyboard"/>

@@ -35,19 +35,19 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     public EmojiKeyboard(EmojiCompatActivity activity, EmojiEditText input) {
         this.mInput = input;
         this.mActivity = activity;
-        this.mEmojiKeyboardLayout = (RelativeLayout) this.mActivity.findViewById(R.id.emoji_keyboard);
+        this.mEmojiKeyboardLayout = (RelativeLayout) mActivity.findViewById(R.id.emoji_keyboard);
         this.initEmojiKeyboardViewPager();
         this.setBackspaceBehaviour();
     }
 
     // INTIALIZATIONS
     private void initEmojiKeyboardViewPager() {
-        final EmojiTabAdapter adapter = new EmojiTabAdapter(this.mActivity.getSupportFragmentManager());
+        final EmojiTabAdapter adapter = new EmojiTabAdapter(mActivity.getSupportFragmentManager());
         adapter.setOnEmojiClickListener(this);
-        final ViewPager viewPager = (ViewPager) this.mActivity.findViewById(R.id.emoji_viewpager);
+        final ViewPager viewPager = (ViewPager) mActivity.findViewById(R.id.emoji_viewpager);
         viewPager.setAdapter(adapter);
 
-        final SmartTabLayout viewPagerTab = (SmartTabLayout) this.mActivity.findViewById(R.id.emoji_tabs);
+        final SmartTabLayout viewPagerTab = (SmartTabLayout) mActivity.findViewById(R.id.emoji_tabs);
 
         final LayoutInflater inf = LayoutInflater.from(this.mActivity);
         viewPagerTab.setCustomTabView(new SmartTabLayout.TabProvider() {
@@ -92,6 +92,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 switch (position) {
                     case 0:
+                        // adapter.updateRecentEmojis();
                         EmojiKeyboard.this.mTabIcons[0].setImageResource(R.drawable.ic_emoji_recent_light_activated);
                         EmojiKeyboard.this.mTabIcons[1].setImageResource(R.drawable.ic_emoji_people_light_normal);
                         EmojiKeyboard.this.mTabIcons[2].setImageResource(R.drawable.ic_emoji_nature_light_normal);
@@ -154,7 +155,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     }
 
     private void setBackspaceBehaviour() {
-        this.mBackspace = (ImageView) this.mActivity.findViewById(R.id.backspace);
+        this.mBackspace = (ImageView) mActivity.findViewById(R.id.backspace);
         this.mBackspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

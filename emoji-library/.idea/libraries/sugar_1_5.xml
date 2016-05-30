@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sugar-1.5">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.satyan/sugar/1.5/res" />
+      <root url="jar://$PROJECT_DIR$/build/intermediates/exploded-aar/com.github.satyan/sugar/1.5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.satyan/sugar/1.5/f3bfcd161cda8770cce9fe8e67479903f48eed1a/sugar-1.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

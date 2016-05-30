@@ -14,22 +14,22 @@ import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
 
 public class EmojiTabAdapter extends FragmentPagerAdapter {
 
-    private static FragmentEmojiRecents FRAGMENT_EMOJI_RECENTS = new FragmentEmojiRecents();
-    private static FragmentEmojiPeople FRAGMENT_EMOJI_PEOPLE = new FragmentEmojiPeople();
-    private static FragmentEmojiNature FRAGMENT_EMOJI_NATURE = new FragmentEmojiNature();
-    private static FragmentEmojiObjects FRAGMENT_EMOJI_OBJECTS = new FragmentEmojiObjects();
-    private static FragmentEmojiPlaces FRAGMENT_EMOJI_PLACES = new FragmentEmojiPlaces();
-    private static FragmentEmojiSymbols FRAGMENT_EMOJI_SYMBOLS = new FragmentEmojiSymbols();
+    private FragmentEmojiRecents FRAGMENT_EMOJI_RECENTS = new FragmentEmojiRecents();
+    private FragmentEmojiPeople FRAGMENT_EMOJI_PEOPLE = new FragmentEmojiPeople();
+    private FragmentEmojiNature FRAGMENT_EMOJI_NATURE = new FragmentEmojiNature();
+    private FragmentEmojiObjects FRAGMENT_EMOJI_OBJECTS = new FragmentEmojiObjects();
+    private FragmentEmojiPlaces FRAGMENT_EMOJI_PLACES = new FragmentEmojiPlaces();
+    private FragmentEmojiSymbols FRAGMENT_EMOJI_SYMBOLS = new FragmentEmojiSymbols();
 
 
     // CONTRACT
     public EmojiTabAdapter(FragmentManager fm) {
         super(fm);
-        EmojiTabAdapter.FRAGMENT_EMOJI_PEOPLE.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
-        EmojiTabAdapter.FRAGMENT_EMOJI_NATURE.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
-        EmojiTabAdapter.FRAGMENT_EMOJI_OBJECTS.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
-        EmojiTabAdapter.FRAGMENT_EMOJI_PLACES.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
-        EmojiTabAdapter.FRAGMENT_EMOJI_SYMBOLS.subscribeRecentListener(EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS);
+        FRAGMENT_EMOJI_PEOPLE.subscribeRecentListener(FRAGMENT_EMOJI_RECENTS);
+        FRAGMENT_EMOJI_NATURE.subscribeRecentListener(FRAGMENT_EMOJI_RECENTS);
+        FRAGMENT_EMOJI_OBJECTS.subscribeRecentListener(FRAGMENT_EMOJI_RECENTS);
+        FRAGMENT_EMOJI_PLACES.subscribeRecentListener(FRAGMENT_EMOJI_RECENTS);
+        FRAGMENT_EMOJI_SYMBOLS.subscribeRecentListener(FRAGMENT_EMOJI_RECENTS);
     }
 
     // CALLBACKS
@@ -85,15 +85,15 @@ public class EmojiTabAdapter extends FragmentPagerAdapter {
 
     // GETTERS AND SETTERS
     public void setOnEmojiClickListener(OnEmojiClickListener listener) {
-        EmojiTabAdapter.FRAGMENT_EMOJI_RECENTS.addEmojiconClickListener(listener);
-        EmojiTabAdapter.FRAGMENT_EMOJI_PEOPLE.addEmojiconClickListener(listener);
-        EmojiTabAdapter.FRAGMENT_EMOJI_NATURE.addEmojiconClickListener(listener);
-        EmojiTabAdapter.FRAGMENT_EMOJI_OBJECTS.addEmojiconClickListener(listener);
-        EmojiTabAdapter.FRAGMENT_EMOJI_PLACES.addEmojiconClickListener(listener);
-        EmojiTabAdapter.FRAGMENT_EMOJI_SYMBOLS.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_RECENTS.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_PEOPLE.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_NATURE.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_OBJECTS.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_PLACES.addEmojiconClickListener(listener);
+        FRAGMENT_EMOJI_SYMBOLS.addEmojiconClickListener(listener);
     }
 
-    public static FragmentEmojiRecents getFragmentEmojiRecents() {
-        return FRAGMENT_EMOJI_RECENTS;
+    public void updateRecentEmojis () {
+        FRAGMENT_EMOJI_RECENTS.updateRecentEmojis();
     }
 }

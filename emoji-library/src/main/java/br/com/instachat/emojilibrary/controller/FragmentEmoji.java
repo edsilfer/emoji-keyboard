@@ -1,17 +1,18 @@
 package br.com.instachat.emojilibrary.controller;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import java.util.List;
-
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
+import br.com.instachat.emojilibrary.util.SharedPreferencesManager;
 import br.com.instachat.emojilibrary.util.TimestampUtil;
 
 /**
@@ -24,6 +25,7 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
     private RecentListener mRecentListener;
     private OnEmojiClickListener mOnEmojiconClickedListener;
     private View mRootView;
+    private SharedPreferencesManager mSharedPreferencesManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,20 +43,17 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-                    List<Emoji> aux = Emoji.find(Emoji.class, " emoji = ? ", clickedEmoji.getEmoji());
-                    if (aux != null && aux.size() == 1) {
-                        aux.get(0).setTimestamp(TimestampUtil.getCurrentTimestamp());
-                        Emoji.save(aux.get(0));
-                    } else if (aux == null || aux.size() == 0) {
-                        Emoji.save(clickedEmoji);
-                    }
-                    if (FragmentEmoji.this.mRecentListener != null) {
-                        FragmentEmoji.this.mRecentListener.notifyEmojiAdded();
-                    }
+                    mSharedPreferencesManager.pushEmoji(clickedEmoji);
                 }
             };
             new Thread(r).start();
         }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mSharedPreferencesManager = new SharedPreferencesManager(getActivity());
     }
 
     public void addEmojiconClickListener(OnEmojiClickListener listener) {

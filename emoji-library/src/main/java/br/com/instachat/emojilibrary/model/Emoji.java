@@ -11,12 +11,11 @@ import java.sql.Timestamp;
 /**
  * Created by Leonardo Assunção on 18/02/2016.
  */
-public class Emoji extends SugarRecord implements Parcelable {
+public class Emoji implements Parcelable {
 
     public static final String TAG = "Emoji";
 
     private int icon;
-    @Ignore
     private char value;
     private String emoji;
     private Timestamp timestamp;

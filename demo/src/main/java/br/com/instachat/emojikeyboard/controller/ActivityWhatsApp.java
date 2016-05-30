@@ -1,6 +1,7 @@
 package br.com.instachat.emojikeyboard.controller;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -16,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,9 +28,9 @@ import br.com.instachat.emojikeyboard.model.Message;
 import br.com.instachat.emojikeyboard.model.MessageType;
 import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.WhatsAppPanel;
+import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.WhatsAppPanelEventListener;
-import br.com.instachat.emojilibrary.util.App;
 
 
 /**
@@ -50,11 +52,12 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_whatsapp);
+
         this.initToolbar();
         this.initDrawerMenu();
         this.initMessageList();
         this.setWhatsAppTheme();
-        this.mBottomPanel = new WhatsAppPanel(this, this);
+        this.mBottomPanel = new WhatsAppPanel(this, this, R.color.colorPrimaryWhatsApp);
     }
 
     @Override
@@ -91,7 +94,7 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
 
         CircularImageView thumbnail = (CircularImageView) this.findViewById(R.id.github_thumbnail);
 
-        Picasso.with(App.context())
+        Picasso.with(this)
                 .load(R.drawable.github)
                 .resize(60, 60)
                 .centerCrop()

@@ -9,14 +9,14 @@ public class SoftKeyboardUtil {
 
     public static final String TAG = "SoftKeyboardUtil";
 
-    public static void dismissSoftKeyboard(EditText editText) {
-        InputMethodManager imm = (InputMethodManager) App.context().getSystemService(Context.INPUT_METHOD_SERVICE);
+    public static void dismissSoftKeyboard(Context context, EditText editText) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
         editText.clearFocus();
     }
 
-    public static void showSoftKeyboard(EditText editText) {
-        InputMethodManager imm = (InputMethodManager) App.context().getSystemService(Context.INPUT_METHOD_SERVICE);
+    public static void showSoftKeyboard(Context context, EditText editText) {
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         editText.requestFocus();
     }
