@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.instachat.emojilibrary.model.Emoji;
@@ -31,6 +32,9 @@ public class SharedPreferencesManager {
 
     public void pushEmoji(Emoji emoji) {
         List<Emoji> emojis = popRecents();
+        if (null == emojis || emojis.size() == 0) {
+            emojis = new ArrayList<>();
+        }
         Gson gson = new Gson();
         emojis.add(emoji);
         mWriter.putString(RECENT_EMOJIS, gson.toJson(emojis));

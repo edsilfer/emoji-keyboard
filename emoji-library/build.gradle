@@ -6,7 +6,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 group = 'br.com.instachat'
-version = '1.0.4'
+version = '1.0.6'
 
 android {
     compileSdkVersion 23
@@ -16,7 +16,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
-        versionName "1.0.4"
+        versionName "1.0.6"
         multiDexEnabled true
     }
     dexOptions {
@@ -42,7 +42,7 @@ ext {
     siteUrl = 'https://github.com/instachat/emoji-library'
     gitUrl = 'https://github.com/instachat/emoji-library.git'
 
-    libraryVersion = '1.0.4'
+    libraryVersion = '1.0.6'
 
     developerId = 'edsilfer'
     developerName = 'Edgar Fernandes'

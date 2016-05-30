@@ -58,9 +58,11 @@ public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji
 
             this.mUseSystemDefault = bundle.getBoolean(Constants.USE_SYSTEM_DEFAULT_KEY);
         }
-        mAdapter = new EmojiAdapter(view.getContext(), this.mData, this.mUseSystemDefault);
-        this.mGridView.setAdapter(mAdapter);
-        this.mGridView.setOnItemClickListener(this);
+        if (null != mData && mData.size() > 0) {
+            mAdapter = new EmojiAdapter(view.getContext(), this.mData, this.mUseSystemDefault);
+            this.mGridView.setAdapter(mAdapter);
+            this.mGridView.setOnItemClickListener(this);
+        }
     }
 
     @Override
