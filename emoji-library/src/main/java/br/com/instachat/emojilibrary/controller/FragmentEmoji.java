@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.controller.emoji_pages.FragmentEmojiRecents;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
-import br.com.instachat.emojilibrary.util.RecentEmojisManager;
 import br.com.instachat.emojilibrary.util.TimestampUtil;
 
 /**

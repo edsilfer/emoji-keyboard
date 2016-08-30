@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.util;
+package br.com.instachat.emojilibrary.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,10 +9,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
 
-import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.model.Emoji;
 
 /**
@@ -29,7 +28,7 @@ public class RecentEmojisManager {
     static private SharedPreferences.Editor mWriter;
     static private SharedPreferences mReader;
 
-    private Stack<Emoji> recentEmojis;
+    private volatile ArrayList<Emoji> recentEmojis;
 
     private static Context context;
 
@@ -43,7 +42,7 @@ public class RecentEmojisManager {
         mReader = context.getSharedPreferences(PREFERENCES_FILE, context.MODE_PRIVATE);
         recentEmojis = getSavedRecentEmojis();
         if (recentEmojis == null){
-            recentEmojis = new Stack<>();
+            recentEmojis = new ArrayList<>();
         }
     }
 
@@ -60,27 +59,23 @@ public class RecentEmojisManager {
         mWriter.commit();
     }
 
-    public Stack<Emoji> getSavedRecentEmojis() {
+    public ArrayList<Emoji> getSavedRecentEmojis() {
         Gson gson = new GsonBuilder().setDateFormat("MMM dd, yyyy HH:MM:ss").create();
-        Type type = new TypeToken<Stack<Emoji>>() {
+        Type type = new TypeToken<ArrayList<Emoji>>() {
         }.getType();
         return gson.fromJson(mReader.getString(RECENT_EMOJIS, ""), type);
     }
 
-    public Stack<Emoji> getRecentEmojis() {
-        Stack<Emoji> reverseOrderStack = new Stack<>();
-        for(Emoji emoji : recentEmojis){
-            reverseOrderStack.push(emoji);
-        }
-        return reverseOrderStack;
+    public ArrayList<Emoji> getRecentEmojis() {
+        return recentEmojis;
     }
 
     public void addRecentEmoji(Emoji emoji){
-        int emojiPosition = recentEmojis.search(emoji);
+        int emojiPosition = recentEmojis.indexOf(emoji);
         if(emojiPosition != -1){
             recentEmojis.remove(emojiPosition);
         }
-        recentEmojis.push(emoji);
+        recentEmojis.add(0,emoji);
 
         //save new recent stack async
         new AsyncTask<Void, Void, Boolean>() {

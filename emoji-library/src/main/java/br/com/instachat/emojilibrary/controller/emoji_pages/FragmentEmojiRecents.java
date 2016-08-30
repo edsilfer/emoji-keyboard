@@ -1,6 +1,5 @@
 package br.com.instachat.emojilibrary.controller.emoji_pages;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.controller.FragmentEmoji;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.util.Constants;
-import br.com.instachat.emojilibrary.util.RecentEmojisManager;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -69,6 +67,7 @@ public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji
 
     @Override
     public void notifyEmojiAdded() {
-        mAdapter.notifyDataSetChanged();
+        if(mAdapter!=null)
+            mAdapter.notifyDataSetChanged();
     }
 }
