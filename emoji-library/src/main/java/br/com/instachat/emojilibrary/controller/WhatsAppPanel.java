@@ -4,7 +4,6 @@ import android.content.res.ColorStateList;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -116,7 +115,7 @@ public class WhatsAppPanel {
     }
 
     private void setOnBackPressed() {
-        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
+        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressedListener() {
             @Override
             public Boolean onBackPressed() {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {

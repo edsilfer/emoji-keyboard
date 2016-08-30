@@ -3,16 +3,12 @@ package br.com.instachat.emojilibrary.model.layout;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.orm.SugarContext;
-
-import br.com.instachat.emojilibrary.model.Emoji;
-
 /**
  * Created by edgar on 18/02/2016.
  */
 public class EmojiCompatActivity extends AppCompatActivity {
 
-    private OnBackPressed mOnBackPressed;
+    private OnBackPressedListener mOnBackPressedListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +17,8 @@ public class EmojiCompatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (this.mOnBackPressed != null) {
-            if (!this.mOnBackPressed.onBackPressed()) {
+        if (this.mOnBackPressedListener != null) {
+            if (!this.mOnBackPressedListener.onBackPressed()) {
                 super.onBackPressed();
             }
         } else {
@@ -30,11 +26,11 @@ public class EmojiCompatActivity extends AppCompatActivity {
         }
     }
 
-    public void setOnBackPressed(OnBackPressed backListener) {
-        this.mOnBackPressed = backListener;
+    public void setOnBackPressed(OnBackPressedListener backListener) {
+        this.mOnBackPressedListener = backListener;
     }
 
-    public interface OnBackPressed {
+    public interface OnBackPressedListener {
         Boolean onBackPressed();
     }
 }
