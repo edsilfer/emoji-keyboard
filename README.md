@@ -11,40 +11,13 @@ A library to provide an emoji-keyboard implementation for Android applications
 </p>
 
 #Quicky Setup
-A code worths more than... well, nevermind.
-
 ```
 dependencies {
     compile 'br.com.instachat:emoji-library:0.0.2'
 }
 ```
+Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.
 
-```xml
-<br.com.instachat.emojilibrary.model.layout.EmojiKeyboardLayout
-    android:layout_width="match_parent"
-    android:layout_height="263dip"/>
-```
-
-```xml
-<br.com.instachat.emojilibrary.model.layout.EmojiEditText
-    android:id="@+id/input"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Message"
-    android:singleLine="true"
-    android:textColor="@color/rsc_bottom_panel_accent"
-    android:textSize="18dip"
-    android:theme="@style/TelegramEditText"
-    app:emojiSize="25dip"/>
-```
-
-```java
-// Activity must descent from EmojiCompatActivity
-prepareKeyboard(EmojiCompatActivity activity, EmojiEditText input)
-// CODE
-```
-
-_P.S: Further details about how add the Telegram or Whats App bar - both provived by its library - please, visit our [wiki page](https://github.com/instachat/emoji-library/wiki)_
 
 # <a name="third-part-libraries"></a>Third Part Libraries & Special Thanks
 * [Rockerhieu / emojicon](#REF1): _Do you like emojis in Whatsapp, iMessage? Emojicon is a library to implement such a thing for Android_;
