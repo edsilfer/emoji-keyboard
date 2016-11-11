@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "br.com.instachat.emojikeyboard"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -16,7 +16,7 @@ android {
         javaMaxHeapSize "4g"
     }
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -26,7 +26,7 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:appcompat-v7:24.1.1'
     compile 'com.android.support:design:+'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
     compile 'com.mikhaellopez:circularimageview:2.0.2'

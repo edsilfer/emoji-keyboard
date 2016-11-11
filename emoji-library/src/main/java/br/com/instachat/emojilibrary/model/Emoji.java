@@ -128,4 +128,6 @@ public class Emoji implements Parcelable {
     public String getEmoji() {
         return emoji;
     }
+
+
 }

@@ -171,7 +171,7 @@ public class TelegramPanel {
     }
 
     private void setOnBackPressed() {
-        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressed() {
+        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressedListener() {
             @Override
             public Boolean onBackPressed() {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {

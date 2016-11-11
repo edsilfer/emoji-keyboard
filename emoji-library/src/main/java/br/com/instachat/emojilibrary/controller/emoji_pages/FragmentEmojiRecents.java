@@ -1,6 +1,5 @@
 package br.com.instachat.emojilibrary.controller.emoji_pages;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.controller.FragmentEmoji;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.util.Constants;
-import br.com.instachat.emojilibrary.util.SharedPreferencesManager;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -30,12 +28,11 @@ public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji
     private List<Emoji> mData;
     private EmojiAdapter mAdapter;
     private boolean mUseSystemDefault = false;
-    private SharedPreferencesManager mSharedPreferencesManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater,container,savedInstanceState);
         this.mRootView = inflater.inflate(R.layout.frag_emoji_recents, container, false);
-        mSharedPreferencesManager = new SharedPreferencesManager(getActivity());
         return this.mRootView;
     }
 
@@ -45,7 +42,7 @@ public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji
         Bundle bundle = getArguments();
 
         if (bundle == null) {
-            this.mData = mSharedPreferencesManager.popRecents();
+            this.mData = mRecentEmojisManager.getRecentEmojis();
             this.mUseSystemDefault = false;
         } else {
             Parcelable[] parcels = bundle.getParcelableArray(Constants.EMOJI_KEY);
@@ -63,26 +60,14 @@ public class FragmentEmojiRecents extends FragmentEmoji implements FragmentEmoji
             this.mGridView.setAdapter(mAdapter);
             this.mGridView.setOnItemClickListener(this);
         }
+
+
+
     }
 
     @Override
     public void notifyEmojiAdded() {
-        new AsyncTask<Void, Void, List<Emoji>>() {
-            @Override
-            protected void onPostExecute(List<Emoji> emojis) {
-                FragmentEmojiRecents.this.mGridView.setAdapter(new EmojiAdapter(FragmentEmojiRecents.this.mRootView.getContext(), emojis, FragmentEmojiRecents.this.mUseSystemDefault));
-            }
-
-            @Override
-            protected List<Emoji> doInBackground(Void... params) {
-                return mSharedPreferencesManager.popRecents();
-            }
-        }.execute();
-    }
-
-    public void updateRecentEmojis () {
-        this.mData = mSharedPreferencesManager.popRecents();
-        this.mGridView.setAdapter(new EmojiAdapter(mRootView.getContext(), this.mData, this.mUseSystemDefault));
-        this.mGridView.setOnItemClickListener(this);
+        if(mAdapter!=null)
+            mAdapter.notifyDataSetChanged();
     }
 }
