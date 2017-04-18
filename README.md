@@ -15,7 +15,7 @@ A library to provide an emoji-keyboard implementation for Android applications
 # Quicky Setup
 ```
 dependencies {
-    compile 'br.com.instachat:emoji-library:1.0.8'
+    compile 'br.com.instachat:emoji-library:1.0.10'
 }
 ```
 Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.
