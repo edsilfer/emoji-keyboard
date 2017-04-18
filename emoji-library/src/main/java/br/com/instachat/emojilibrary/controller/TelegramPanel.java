@@ -1,12 +1,19 @@
 package br.com.instachat.emojilibrary.controller;
 
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import java.util.concurrent.Executors;
@@ -14,9 +21,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
+import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -96,6 +103,7 @@ public class TelegramPanel {
 
     private void setInputConfig() {
         this.mInput = (EmojiEditText) this.mBottomPanel.findViewById(R.id.input);
+        mInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
             @Override
             public void onSoftKeyboardDisplay() {

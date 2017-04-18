@@ -32,6 +32,7 @@ import br.com.instachat.emojilibrary.controller.TelegramPanel;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
+import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
 
 
 /**
