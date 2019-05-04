@@ -45,7 +45,7 @@
             android:background="@color/rsc_emoji_tab_bkg"
             android:paddingLeft="10dip"
             android:paddingRight="10dip"
-            android:src="@drawable/sym_keyboard_delete_holo_dark"/>
+            app:srcCompat="@drawable/sym_keyboard_delete_holo_dark"/>
     </LinearLayout>
 
     <android.support.v4.view.ViewPager

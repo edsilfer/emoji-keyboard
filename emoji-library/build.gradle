@@ -10,6 +10,7 @@ android {
         versionName "1.0.6"
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -20,10 +21,11 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support:design:28.0.0'
-    implementation 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    implementation 'com.github.satyan:sugar:1.5'
-    implementation 'com.google.code.gson:gson:2.8.2'
+    testImplementation deps.test.junit
+
+    implementation deps.sdk.appCompat
+    implementation deps.sdk.design
+
+    implementation deps.external.smarttablayout
+    implementation deps.external.gson
 }

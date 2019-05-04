@@ -15,7 +15,7 @@
             @color/rsc_bottom_panel_accent
         </item>
         <item name="android:textColor">#000</item>
-        <item name="android:backgroundTint">
+        <item name="backgroundTint">
             @color/rsc_bottom_panel_bkg
         </item>
     </style>
@@ -34,7 +34,7 @@
             @color/rsc_bottom_panel_accent
         </item>
         <item name="android:textColor">#000</item>
-        <item name="android:backgroundTint">
+        <item name="backgroundTint">
             #FFF
         </item>
     </style>

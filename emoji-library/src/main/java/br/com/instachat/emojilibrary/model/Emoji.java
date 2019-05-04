@@ -3,9 +3,6 @@ package br.com.instachat.emojilibrary.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
-
 import java.sql.Timestamp;
 
 /**
