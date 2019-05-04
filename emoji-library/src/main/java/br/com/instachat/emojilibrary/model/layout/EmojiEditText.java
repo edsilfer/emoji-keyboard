@@ -9,13 +9,12 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.util.EmojiUtil;
 import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
 
-public class EmojiEditText extends EditText {
+public class EmojiEditText extends android.support.v7.widget.AppCompatEditText {
 
     public static final String TAG = "EmojiEditText";
 
@@ -41,12 +40,6 @@ public class EmojiEditText extends EditText {
 
     public EmojiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.initFocusListener();
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public EmojiEditText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         this.initFocusListener();
     }
 

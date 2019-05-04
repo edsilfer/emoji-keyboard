@@ -1,7 +1,6 @@
 package br.com.instachat.emojikeyboard.controller;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -17,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
-import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,7 +26,6 @@ import br.com.instachat.emojikeyboard.model.Message;
 import br.com.instachat.emojikeyboard.model.MessageType;
 import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.WhatsAppPanel;
-import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.WhatsAppPanelEventListener;
 
@@ -37,8 +34,6 @@ import br.com.instachat.emojilibrary.model.layout.WhatsAppPanelEventListener;
  * Created by edgar on 17/02/2016.
  */
 public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPanelEventListener {
-
-    public static final String TAG = "ActivityWhatsApp";
 
     private Toolbar mToolbar;
     private DrawerLayout mDrawerLayout;
@@ -114,9 +109,7 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
                 ActivityWhatsApp.this.mToolbar,
                 R.string.drawer_open,
                 R.string.drawer_close
-        )
-
-        {
+        ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();

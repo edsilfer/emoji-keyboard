@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
-import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,10 +28,8 @@ import br.com.instachat.emojikeyboard.model.Message;
 import br.com.instachat.emojikeyboard.model.MessageType;
 import br.com.instachat.emojikeyboard.util.TimestampUtil;
 import br.com.instachat.emojilibrary.controller.TelegramPanel;
-import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
-import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
 
 
 /**
@@ -115,9 +112,7 @@ public class ActivityTelegram extends EmojiCompatActivity implements TelegramPan
                 ActivityTelegram.this.mToolbar,
                 R.string.drawer_open,
                 R.string.drawer_close
-        )
-
-        {
+        ) {
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();
