@@ -23,19 +23,13 @@
             android:value="br.com.instachat.android"/>
 
         <activity
-            android:name=".controller.ActivityTelegram"
+            android:name=".ChatActivity"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".controller.ActivityWhatsApp"
-            android:label="@string/app_name"
-            android:windowSoftInputMode="adjustNothing">
         </activity>
 
     </application>

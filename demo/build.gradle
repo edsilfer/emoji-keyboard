@@ -13,7 +13,10 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 
     buildTypes {
@@ -31,8 +34,6 @@ dependencies {
     implementation deps.sdk.appCompat
     implementation deps.sdk.design
 
-    implementation deps.external.circularimageview
-    implementation deps.external.picasso
     implementation deps.external.smarttablayout
 
     implementation project(':emoji-library')

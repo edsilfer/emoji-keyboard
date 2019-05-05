@@ -1,7 +1,8 @@
 def versions = [
-        circularimageview       : "2.0.2",
-        junit                   : "4.12",
+        gradle                  : "3.4.0",
         gson                    : "2.8.2",
+        junit                   : "4.12",
+        kotlin                  : "1.3.31",
         picasso                 : "2.5.2",
         smarttablayout          : "1.6.0@aar",
         support                 : "28.0.0",
@@ -13,7 +14,6 @@ def sdk = [
 ]
 
 def external = [
-        circularimageview       : "com.mikhaellopez:circularimageview:${versions.circularimageview}",
         gson                    : "com.google.code.gson:gson:${versions.gson}",
         picasso                 : "com.squareup.picasso:picasso:${versions.picasso}",
         smarttablayout          : "com.ogaclejapan.smarttablayout:library:${versions.smarttablayout}",
@@ -21,6 +21,16 @@ def external = [
 
 def test = [
         junit                   : "junit:junit:${versions.junit}"
+]
+
+def buildConfig = [
+        gradlePlugin            : "com.android.tools.build:gradle:${versions.gradle}",
+        kotlinGradlePlugin      : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+        kotlinStdLib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+]
+
+ext.config = [
+        "build": buildConfig,
 ]
 
 ext.deps = [

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="@string/menu_header_communication">
+        <menu>
+            <item
+                android:id="@+id/nav_edgar"
+                android:icon="@drawable/ic_menu_send"
+                android:title="@string/menu_edgar" />
+        </menu>
+    </item>
+
+</menu>

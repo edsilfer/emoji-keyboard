@@ -3,4 +3,11 @@
     <string name="menu_action_toogle_activity">toogle</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="github_url">https://github.com/instachat/emoji-library</string>
+
+    <string name="menu_header_communication">Get in contact</string>
+    <string name="menu_edgar">Edgar S Fernandes</string>
+    <string name="menu_github_disclaimer">Find us on GitHub!</string>
 </resources>
