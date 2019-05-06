@@ -25,7 +25,9 @@ class ChatActivity :
         ChatView,
         EmojiCompatActivity() {
 
-    private val controller = SampleController(this)
+    private val controller = ChatController(this)
+    private val keyboardListener = KeyboardListener(this)
+
     private var adapter: MessageAdapter? = null
     private var bottomPanel: TelegramPanel? = null
     private var messages: RecyclerView? = null
@@ -35,7 +37,7 @@ class ChatActivity :
         setContentView(R.layout.activity_main)
         setupToolbarAndDrawerMenu()
         setupMessagesRecyclerView()
-        bottomPanel = TelegramPanel(this, controller)
+        bottomPanel = TelegramPanel(this, keyboardListener)
     }
 
     private fun setupToolbarAndDrawerMenu() {

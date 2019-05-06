@@ -77,7 +77,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return this.mDataset.size();
     }
 
-    // GETTERS AND SETTERS
     public List<Message> getDataset() {
         return mDataset;
     }
@@ -93,10 +92,10 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         private EmojiTextView content;
         private TextView timestamp;
 
-        public ViewHolder(View v) {
+        ViewHolder(View v) {
             super(v);
-            this.content = (EmojiTextView) v.findViewById(R.id.content);
-            this.timestamp = (TextView) v.findViewById(R.id.timestamp);
+            this.content = v.findViewById(R.id.content);
+            this.timestamp = v.findViewById(R.id.timestamp);
         }
     }
 }
