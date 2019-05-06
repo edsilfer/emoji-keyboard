@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
-import br.com.instachat.emojikeyboard.adapter.MessageAdapter
 import br.com.instachat.emojikeyboard.model.Message
 import br.com.instachat.emojilibrary.controller.TelegramPanel
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity
@@ -76,7 +75,7 @@ class ChatActivity :
     }
 
     override fun addMessage(message: Message) {
-        adapter!!.dataset.add(message)
+        adapter!!.data.add(message)
         adapter!!.notifyDataSetChanged()
         messages!!.scrollToPosition(adapter!!.itemCount - 1)
         bottomPanel?.text = ""
