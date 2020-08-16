@@ -2,10 +2,11 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.content.res.ColorStateList;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

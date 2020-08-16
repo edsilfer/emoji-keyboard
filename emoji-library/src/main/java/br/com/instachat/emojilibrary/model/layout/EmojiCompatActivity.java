@@ -1,7 +1,8 @@
 package br.com.instachat.emojilibrary.model.layout;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by edgar on 18/02/2016.

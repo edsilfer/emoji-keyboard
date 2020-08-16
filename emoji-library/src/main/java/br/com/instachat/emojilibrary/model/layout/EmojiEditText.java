@@ -14,7 +14,7 @@ import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.util.EmojiUtil;
 import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
 
-public class EmojiEditText extends android.support.v7.widget.AppCompatEditText {
+public class EmojiEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     public static final String TAG = "EmojiEditText";
 

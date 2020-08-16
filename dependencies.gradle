@@ -9,8 +9,8 @@ def versions = [
 ]
 
 def sdk = [
-        appCompat               : "com.android.support:appcompat-v7:${versions.support}",
-        design                  : "com.android.support:design:${versions.support}",
+        appCompat               : "androidx.appcompat:appcompat:1.0.0",
+        design                  : "com.google.android.material:material:1.1.0-beta02",
 ]
 
 def external = [
