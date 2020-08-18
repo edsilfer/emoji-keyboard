@@ -1,11 +1,11 @@
 package br.com.instachat.emojikeyboard
 
 import android.os.AsyncTask
-import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

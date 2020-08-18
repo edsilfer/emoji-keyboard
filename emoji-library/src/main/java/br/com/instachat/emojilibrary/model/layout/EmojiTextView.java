@@ -17,7 +17,7 @@ import br.com.instachat.emojilibrary.util.EmojiUtil;
 /**
  * @author Hieu Rocker (rockerhieu@gmail.com).
  */
-public class EmojiTextView extends android.support.v7.widget.AppCompatTextView {
+public class EmojiTextView extends androidx.appcompat.widget.AppCompatTextView {
     private int mEmojiSize;
     private int mEmojiAlignment;
     private int mEmojiTextSize;

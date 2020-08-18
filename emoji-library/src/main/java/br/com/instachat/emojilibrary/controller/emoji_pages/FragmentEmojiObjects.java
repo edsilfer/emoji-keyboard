@@ -2,7 +2,6 @@ package br.com.instachat.emojilibrary.controller.emoji_pages;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.controller.FragmentEmoji;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.Objects;
-import br.com.instachat.emojilibrary.model.Places;
 
 
 /**

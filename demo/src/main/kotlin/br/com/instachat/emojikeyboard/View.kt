@@ -1,9 +1,9 @@
 package br.com.instachat.emojikeyboard
 
 import android.os.Bundle
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.instachat.emojilibrary.controller.TelegramPanel
 import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*

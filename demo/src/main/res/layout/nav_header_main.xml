@@ -26,7 +26,7 @@
 
     </LinearLayout>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/view2"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -43,5 +43,5 @@
             android:padding="10dip"
             android:scaleType="centerCrop"
             android:src="@drawable/github_icon" />
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
