@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import br.com.instachat.emojilibrary.model.layout.EmojiTextView
+import br.com.instachat.emojilibrary.view.EmojiTextView
 
 
 /**

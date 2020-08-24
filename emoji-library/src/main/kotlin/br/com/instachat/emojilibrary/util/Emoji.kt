@@ -5,7 +5,8 @@ import android.text.Spannable
 import android.util.SparseIntArray
 import br.com.instachat.emojilibrary.model.*
 import br.com.instachat.emojilibrary.model.Objects
-import br.com.instachat.emojilibrary.model.layout.EmojiSpan
+import br.com.instachat.emojilibrary.util.extension.*
+import br.com.instachat.emojilibrary.view.EmojiSpan
 import java.util.*
 
 object Emoji {

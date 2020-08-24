@@ -5,7 +5,7 @@ import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.instachat.emojilibrary.controller.TelegramPanel
-import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity
+import br.com.instachat.emojilibrary.view.EmojiCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*

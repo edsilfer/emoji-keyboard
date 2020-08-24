@@ -1,7 +1,7 @@
 package br.com.instachat.emojikeyboard
 
 import android.view.MenuItem
-import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener
+import br.com.instachat.emojilibrary.view.listeners.TelegramPanelEventListener
 import com.google.android.material.navigation.NavigationView
 
 private const val ECHO_DELAY = 1000L

@@ -11,8 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
-import br.com.instachat.emojilibrary.util.Time;
+import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener;
 
 /**
  * Created by edgar on 18/02/2016.

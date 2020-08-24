@@ -1,18 +1,12 @@
 package br.com.instachat.emojilibrary.controller;
 
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
@@ -22,9 +16,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
-import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
-import br.com.instachat.emojilibrary.model.layout.TelegramPanelEventListener;
+import br.com.instachat.emojilibrary.view.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.view.EmojiEditText;
+import br.com.instachat.emojilibrary.view.listeners.KeyboardListener;
+import br.com.instachat.emojilibrary.view.listeners.TelegramPanelEventListener;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -65,7 +60,7 @@ public class TelegramPanel {
             public void onClick(View v) {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
                     TelegramPanel.this.closeCurtain();
-                    if (TelegramPanel.this.mInput.isSoftKeyboardVisible()) {
+                    if (TelegramPanel.this.mInput.isKeyboardVisible()) {
                         TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard_grey600_24dp);
                         TelegramPanel.this.mInput.hideSoftKeyboard();
                     } else {
@@ -105,9 +100,9 @@ public class TelegramPanel {
     private void setInputConfig() {
         this.mInput = (EmojiEditText) this.mBottomPanel.findViewById(R.id.input);
         mInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
-        this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
+        this.mInput.addKeyboardListener(new KeyboardListener() {
             @Override
-            public void onSoftKeyboardDisplay() {
+            public void keyboardVisible() {
                 if (!TelegramPanel.this.isEmojiKeyboardVisible) {
                     final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
                     scheduler.schedule(new Runnable() {
@@ -128,7 +123,7 @@ public class TelegramPanel {
             }
 
             @Override
-            public void onSoftKeyboardHidden() {
+            public void keyboardHidden() {
                 if (TelegramPanel.this.isEmojiKeyboardVisible) {
                     TelegramPanel.this.closeCurtain();
                     TelegramPanel.this.hideEmojiKeyboard(200);

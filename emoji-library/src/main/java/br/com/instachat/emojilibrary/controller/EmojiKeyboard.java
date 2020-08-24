@@ -15,9 +15,9 @@ import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter;
 import br.com.instachat.emojilibrary.model.Emoji;
-import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
-import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
-import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
+import br.com.instachat.emojilibrary.view.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.view.EmojiEditText;
+import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener;
 
 /**
  * Created by edgar on 21/02/2016.

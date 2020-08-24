@@ -13,9 +13,10 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
-import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
-import br.com.instachat.emojilibrary.model.layout.WhatsAppPanelEventListener;
+import br.com.instachat.emojilibrary.view.EmojiCompatActivity;
+import br.com.instachat.emojilibrary.view.EmojiEditText;
+import br.com.instachat.emojilibrary.view.listeners.KeyboardListener;
+import br.com.instachat.emojilibrary.view.listeners.WhatsAppPanelEventListener;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -54,7 +55,7 @@ public class WhatsAppPanel {
             public void onClick(View v) {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
                     WhatsAppPanel.this.closeCurtain();
-                    if (WhatsAppPanel.this.mInput.isSoftKeyboardVisible()) {
+                    if (WhatsAppPanel.this.mInput.isKeyboardVisible()) {
                         WhatsAppPanel.this.mEmojiButton.setImageResource(R.drawable.ic_keyboard_grey600_24dp);
                         WhatsAppPanel.this.mInput.hideSoftKeyboard();
                     } else {
@@ -83,9 +84,9 @@ public class WhatsAppPanel {
 
     private void setInputConfig() {
         this.mInput = (EmojiEditText) mActivity.findViewById(R.id.input);
-        this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
+        this.mInput.addKeyboardListener(new KeyboardListener() {
             @Override
-            public void onSoftKeyboardDisplay() {
+            public void keyboardVisible() {
                 if (!WhatsAppPanel.this.isEmojiKeyboardVisible) {
                     final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
                     scheduler.schedule(new Runnable() {
@@ -106,7 +107,7 @@ public class WhatsAppPanel {
             }
 
             @Override
-            public void onSoftKeyboardHidden() {
+            public void keyboardHidden() {
                 if (WhatsAppPanel.this.isEmojiKeyboardVisible) {
                     WhatsAppPanel.this.closeCurtain();
                     WhatsAppPanel.this.hideEmojiKeyboard(200);

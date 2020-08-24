@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import br.com.instachat.emojilibrary.R
 import br.com.instachat.emojilibrary.model.Emoji
-import br.com.instachat.emojilibrary.model.layout.EmojiTextView
+import br.com.instachat.emojilibrary.view.EmojiTextView
 
 class EmojiAdapter @JvmOverloads constructor(
         ctx: Context,
@@ -39,7 +39,7 @@ class EmojiAdapter @JvmOverloads constructor(
         var icon: EmojiTextView = view!!.findViewById<View>(R.id.emoji_icon) as EmojiTextView
 
         init {
-            icon.setUseSystemDefault(useSystemDefault)
+            icon.setUseSystemDefault(useSystemDefault!!)
         }
     }
 }

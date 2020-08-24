@@ -1,7 +1,7 @@
-package br.com.instachat.emojilibrary.util
+package br.com.instachat.emojilibrary.util.extension
 
 import android.text.Spannable
-import br.com.instachat.emojilibrary.model.layout.EmojiSpan
+import br.com.instachat.emojilibrary.view.EmojiSpan
 
 fun Spannable.removeSpans(textLength: Int) {
     val spans = getSpans(0, textLength, EmojiSpan::class.java)

@@ -19,7 +19,7 @@
         app:layout_scrollFlags="scroll|enterAlways"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <br.com.instachat.emojilibrary.model.layout.EmojiEditText
+        <br.com.instachat.emojilibrary.view.EmojiEditText
             android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

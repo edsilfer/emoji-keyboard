@@ -42,7 +42,7 @@
                     app:srcCompat="@drawable/input_emoji"/>
             </LinearLayout>
 
-            <br.com.instachat.emojilibrary.model.layout.EmojiEditText
+            <br.com.instachat.emojilibrary.view.EmojiEditText
                 android:id="@+id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.util
+package br.com.instachat.emojilibrary.util.extension
 
 import android.util.SparseIntArray
 
