@@ -9,10 +9,14 @@ import br.com.instachat.emojilibrary.model.Emoji
 import br.com.instachat.emojilibrary.model.layout.EmojiTextView
 
 class EmojiAdapter @JvmOverloads constructor(
-        context: Context?,
+        ctx: Context,
         data: List<Emoji?>?,
-        private val useSystemDefault: Boolean
-) : ArrayAdapter<Emoji?>(context!!, R.layout.rsc_emoji_item, data!!) {
+        private val useSystemDefault: Boolean)
+    : ArrayAdapter<Emoji?>(
+        ctx,
+        R.layout.rsc_emoji_item,
+        data!!
+) {
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
