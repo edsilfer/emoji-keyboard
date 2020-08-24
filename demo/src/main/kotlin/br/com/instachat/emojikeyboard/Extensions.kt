@@ -39,23 +39,18 @@ fun <T> delay(milliseconds: Long, task: () -> T): () -> T = {
  */
 fun now(): Timestamp = Timestamp(Date().time)
 
-fun Timestamp.format(format: String): String =
-        SimpleDateFormat(format, Locale.ENGLISH).format(this)
+fun Timestamp.format(format: String): String = SimpleDateFormat(format, Locale.ENGLISH).format(this)
 
 
 /**
  * RecyclerView
  */
-fun ViewGroup.inflate(layoutRes: Int): View =
-        LayoutInflater.from(context).inflate(layoutRes, this, false)
+fun ViewGroup.inflate(layoutRes: Int): View = LayoutInflater.from(context).inflate(layoutRes, this, false)
 
 
 /**
  * Other
  */
-fun AppCompatActivity.shortToast(msg: String) =
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+fun AppCompatActivity.shortToast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
-inline fun <T> with(obj: T, f: T.() -> Unit) {
-    obj.f()
-}
+inline fun <T> with(obj: T, f: T.() -> Unit) = obj.f()

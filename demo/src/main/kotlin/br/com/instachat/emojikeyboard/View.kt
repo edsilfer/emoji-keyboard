@@ -87,5 +87,4 @@ class ChatViewImpl : ChatView, EmojiCompatActivity() {
         menuInflater.inflate(R.menu.menu, menu)
         return true
     }
-
 }
