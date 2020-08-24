@@ -39,8 +39,6 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
         if (this.mOnEmojiconClickedListener != null) {
             final Emoji clickedEmoji = (Emoji) parent.getItemAtPosition(position);
             this.mOnEmojiconClickedListener.onEmojiClicked(clickedEmoji);
-            clickedEmoji.setTimestamp(Time.now());
-
             mRecentEmojisManager.addRecentEmoji(clickedEmoji);
             if(mRecentListener != null){
                 mRecentListener.notifyEmojiAdded();
