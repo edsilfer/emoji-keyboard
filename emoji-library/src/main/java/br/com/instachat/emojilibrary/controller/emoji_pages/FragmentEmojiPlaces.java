@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import java.util.Arrays;
+
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiAdapter;
 import br.com.instachat.emojilibrary.controller.FragmentEmoji;
@@ -48,7 +50,7 @@ public class FragmentEmojiPlaces extends FragmentEmoji {
             }
             mUseSystemDefault = bundle.getBoolean(USE_SYSTEM_DEFAULT_KEY);
         }
-        gridView.setAdapter(new EmojiAdapter(view.getContext(), mData, mUseSystemDefault));
+        gridView.setAdapter(new EmojiAdapter(view.getContext(), Arrays.asList(mData), mUseSystemDefault));
         gridView.setOnItemClickListener(this);
     }
 }
