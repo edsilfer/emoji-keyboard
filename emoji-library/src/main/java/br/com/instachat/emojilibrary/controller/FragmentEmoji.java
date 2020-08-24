@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
-import br.com.instachat.emojilibrary.util.TimestampUtil;
+import br.com.instachat.emojilibrary.util.Time;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -39,7 +39,7 @@ public class FragmentEmoji extends Fragment implements AdapterView.OnItemClickLi
         if (this.mOnEmojiconClickedListener != null) {
             final Emoji clickedEmoji = (Emoji) parent.getItemAtPosition(position);
             this.mOnEmojiconClickedListener.onEmojiClicked(clickedEmoji);
-            clickedEmoji.setTimestamp(TimestampUtil.getCurrentTimestamp());
+            clickedEmoji.setTimestamp(Time.now());
 
             mRecentEmojisManager.addRecentEmoji(clickedEmoji);
             if(mRecentListener != null){

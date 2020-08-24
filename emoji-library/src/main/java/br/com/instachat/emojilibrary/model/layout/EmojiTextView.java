@@ -12,7 +12,8 @@ import android.text.style.DynamicDrawableSpan;
 import android.util.AttributeSet;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.util.EmojiUtil;
+import br.com.instachat.emojilibrary.model.AddEmojiConfiguration;
+import br.com.instachat.emojilibrary.util.Emoji;
 
 /**
  * @author Hieu Rocker (rockerhieu@gmail.com).
@@ -60,7 +61,8 @@ public class EmojiTextView extends androidx.appcompat.widget.AppCompatTextView {
     public void setText(CharSequence text, BufferType type) {
         if (!TextUtils.isEmpty(text)) {
             SpannableStringBuilder builder = new SpannableStringBuilder(text);
-            EmojiUtil.addEmojis(
+
+            AddEmojiConfiguration addEmojiConfiguration = new AddEmojiConfiguration(
                     this.getContext(),
                     builder,
                     this.mEmojiSize,
@@ -68,7 +70,10 @@ public class EmojiTextView extends androidx.appcompat.widget.AppCompatTextView {
                     this.mEmojiTextSize,
                     this.mTextStart,
                     mTextLength,
-                    false);
+                    false
+            );
+
+            Emoji.add(addEmojiConfiguration);
             text = builder;
         }
         super.setText(text, type);

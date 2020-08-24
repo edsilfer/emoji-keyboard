@@ -1,9 +1,7 @@
 package br.com.instachat.emojilibrary.model.layout;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.text.style.DynamicDrawableSpan;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -11,8 +9,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.util.EmojiUtil;
-import br.com.instachat.emojilibrary.util.SoftKeyboardUtil;
+import br.com.instachat.emojilibrary.model.AddEmojiConfiguration;
+import br.com.instachat.emojilibrary.util.Emoji;
+import br.com.instachat.emojilibrary.util.Keyboard;
 
 public class EmojiEditText extends androidx.appcompat.widget.AppCompatEditText {
 
@@ -92,26 +91,30 @@ public class EmojiEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     // EMOJI HANDLER
     private void updateText() {
-        EmojiUtil.addEmojis(
+        AddEmojiConfiguration addEmojiConfiguration = new AddEmojiConfiguration(
                 this.getContext(),
                 this.getText(),
                 this.mEmojiconSize,
                 this.mEmojiconAlignment,
                 this.mEmojiconTextSize,
+                0,
+                -1,
                 this.mUseSystemDefault
         );
+
+        Emoji.add(addEmojiConfiguration);
     }
 
     // SOFT KEYBOARD LISTENER
     public void showSoftKeyboard() {
         this.isSoftKeyboardVisible = Boolean.TRUE;
-        SoftKeyboardUtil.showSoftKeyboard(this.mContext, this);
+        Keyboard.show(this.mContext, this);
     }
 
     public void hideSoftKeyboard() {
         this.isSoftKeyboardVisible = Boolean.FALSE;
         this.clearFocus();
-        SoftKeyboardUtil.dismissSoftKeyboard(this.mContext, this);
+        Keyboard.dismiss(this.mContext, this);
     }
 
     public interface OnSoftKeyboardListener {
