@@ -13,7 +13,7 @@
         android:layout_marginEnd="60dp"
         android:background="@drawable/balloon_incoming_normal">
 
-        <br.com.instachat.emojilibrary.view.EmojiTextView
+        <br.com.edsilfer.emojilibrary.view.EmojiTextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
