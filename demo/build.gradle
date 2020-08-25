@@ -1,35 +1,34 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "br.com.instachat.emojikeyboard"
-        minSdkVersion 15
-        targetSdkVersion 25
+        minSdkVersion 24
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
     }
-    dexOptions {
-        javaMaxHeapSize "4g"
-    }
-    buildTypes {
-        debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.ogaclejapan.smarttablayout:library:1.6.0@aar'
-    compile 'com.mikhaellopez:circularimageview:2.0.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile project(':emoji-library')
+    // Config
+    implementation deps.sdk.appCompat
+    implementation deps.sdk.design
+
+    // External
+    implementation deps.external.smarttablayout
+
+    // Internal
+    implementation project(':emoji-library')
+
+    // Test
+    testImplementation deps.test.junit
 }

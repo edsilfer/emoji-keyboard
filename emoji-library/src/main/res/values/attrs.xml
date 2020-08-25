@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="Emoji">
+    <declare-styleable name="EmojiTextView">
         <attr name="emojiSize" format="dimension"/>
         <attr name="emojiAlignment" format="enum">
             <enum name="bottom" value="0"/>

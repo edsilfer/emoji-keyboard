@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="8dip">
@@ -10,29 +10,29 @@
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="60dp"
-        android:layout_marginRight="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/balloon_outgoing_normal">
 
-        <br.com.instachat.emojilibrary.model.layout.EmojiTextView
+        <br.com.edsilfer.emojilibrary.view.EmojiTextView
             android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dip"
             android:layout_marginLeft="15dip"
-            android:layout_marginRight="15dip"
             android:layout_marginTop="5dip"
+            android:layout_marginRight="15dip"
+            android:layout_marginBottom="25dip"
             android:autoLink="web"
-            android:textSize="16dip"
-            android:text="Rahul Agrawal is a good boy but he does not know what he wants."
-            app:emojiSize="23dip"/>
+            android:textSize="16sp"
+            app:emojiSize="23dip"
+            tools:text="Edgar is a good boy but he does not know what he wants." />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_marginRight="10dip"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="10dip"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="8dp">
@@ -42,8 +42,8 @@
                 style="@style/chat_timings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="2dp"
-                android:text="11:15 PM"/>
+                android:layout_marginEnd="2dp"
+                tools:text="11:15 PM" />
 
         </LinearLayout>
     </FrameLayout>
