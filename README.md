@@ -16,7 +16,7 @@ repositories {
         url "https://jitpack.io"
     }
 }
-implementation 'com.github.edsilfer:emoji-keyboard:2.0.0'
+implementation 'com.github.edsilfer:emoji-keyboard:1.0.0'
 ```
 
 Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.

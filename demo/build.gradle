@@ -28,7 +28,7 @@ dependencies {
 
     // Internal
     // Uncomment to test the release
-    // implementation 'com.github.edsilfer:emoji-keyboard:2.0.2'
+    // implementation 'com.github.edsilfer:emoji-keyboard:1.0.0'
     implementation project(':emoji-library')
 
     // Test
