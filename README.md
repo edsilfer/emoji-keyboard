@@ -11,7 +11,12 @@ An Android library based on [Rockerhieu / emojicon](https://github.com/rockerhie
 
 # Quicky Setup
 ```
-TODO: setup instructions will be added soon
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+implementation 'com.github.edsilfer:emoji-keyboard:2.0.0'
 ```
 
 Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.

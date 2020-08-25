@@ -6,13 +6,13 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "br.com.instachat.emojikeyboard"
+        applicationId "br.com.edsilfer.emojikeyboard"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
-
+//
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -27,6 +27,7 @@ dependencies {
     implementation deps.external.smarttablayout
 
     // Internal
+//    implementation 'com.github.edsilfer:emoji-keyboard:2.0.0'
     implementation project(':emoji-library')
 
     // Test
