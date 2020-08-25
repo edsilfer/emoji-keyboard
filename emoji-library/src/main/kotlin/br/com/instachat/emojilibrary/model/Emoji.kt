@@ -19,7 +19,7 @@ data class Emoji(
         fun from(char: Char): Emoji = Emoji(emoji = char.toString())
 
         @JvmStatic
-        fun from(chars: String): Emoji? = Emoji(emoji = chars)
+        fun from(chars: String): Emoji = Emoji(emoji = chars)
 
         private fun newString(codePoint: Int): String {
             return if (Character.charCount(codePoint) == 1) {

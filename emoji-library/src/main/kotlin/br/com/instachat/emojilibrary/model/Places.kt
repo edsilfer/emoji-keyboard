@@ -6,7 +6,7 @@ import br.com.instachat.emojilibrary.model.Emoji.Companion.from
 
 object Places {
     @JvmField
-    val DATA = arrayOf(
+    val DATA : Array<Emoji> = arrayOf(
             from(0x1f3e0),
             from(0x1f3e1),
             from(0x1f3eb),

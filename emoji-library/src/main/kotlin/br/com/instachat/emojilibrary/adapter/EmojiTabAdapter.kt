@@ -3,25 +3,24 @@ package br.com.instachat.emojilibrary.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import br.com.instachat.emojilibrary.controller.emoji_pages.*
+import br.com.instachat.emojilibrary.controller.pages.*
 import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener
 
-class EmojiTabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
+class EmojiTabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val recentEmojis = FragmentEmojiRecents()
-    private val peopleEmojis = FragmentEmojiPeople()
-    private val natureEmojis = FragmentEmojiNature()
-    private val objectEmojis = FragmentEmojiObjects()
-    private val placesEmojis = FragmentEmojiPlaces()
-    private val symbolsEmojis = FragmentEmojiSymbols()
-
+    private val recentEmojis = Recents()
+    private val peopleEmojis = People()
+    private val natureEmojis = Nature()
+    private val objectEmojis = Objects()
+    private val placesEmojis = Places()
+    private val symbolsEmojis = Symbols()
 
     init {
-        peopleEmojis.subscribeRecentListener(recentEmojis)
-        natureEmojis.subscribeRecentListener(recentEmojis)
-        objectEmojis.subscribeRecentListener(recentEmojis)
-        placesEmojis.subscribeRecentListener(recentEmojis)
-        symbolsEmojis.subscribeRecentListener(recentEmojis)
+        peopleEmojis.registerListener(recentEmojis)
+        natureEmojis.registerListener(recentEmojis)
+        objectEmojis.registerListener(recentEmojis)
+        placesEmojis.registerListener(recentEmojis)
+        symbolsEmojis.registerListener(recentEmojis)
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
@@ -50,12 +49,12 @@ class EmojiTabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!) {
         }
     }
 
-    fun onEmojiClicked(listener: OnEmojiClickListener?) {
-        recentEmojis.addEmojiconClickListener(listener)
-        peopleEmojis.addEmojiconClickListener(listener)
-        natureEmojis.addEmojiconClickListener(listener)
-        objectEmojis.addEmojiconClickListener(listener)
-        placesEmojis.addEmojiconClickListener(listener)
-        symbolsEmojis.addEmojiconClickListener(listener)
+    fun onEmojiClicked(listener: OnEmojiClickListener) {
+        recentEmojis.registerListener(listener)
+        peopleEmojis.registerListener(listener)
+        natureEmojis.registerListener(listener)
+        objectEmojis.registerListener(listener)
+        placesEmojis.registerListener(listener)
+        symbolsEmojis.registerListener(listener)
     }
 }

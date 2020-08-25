@@ -10,6 +10,8 @@ object Constants {
     const val EMOJI_KEY = "emojic"
     const val KEY_CAP_EMOJI = 0x20e3
     const val COLOR_MODE_EMOJI = 0xfe0f
+    const val RECENT_EMOJIS = "RECENTS"
+    const val PREFERENCES_FILE = "EmojiProperties"
 
 
     fun keyCapEmojiFrom(unicode: Int): Int {

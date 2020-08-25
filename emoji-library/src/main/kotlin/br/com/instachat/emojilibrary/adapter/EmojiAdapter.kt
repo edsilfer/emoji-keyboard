@@ -9,15 +9,10 @@ import br.com.instachat.emojilibrary.model.Emoji
 import br.com.instachat.emojilibrary.view.EmojiTextView
 
 class EmojiAdapter @JvmOverloads constructor(
-        ctx: Context,
-        data: List<Emoji?>?,
+        context: Context,
+        var data: MutableList<Emoji>,
         private val useSystemDefault: Boolean)
-    : ArrayAdapter<Emoji?>(
-        ctx,
-        R.layout.rsc_emoji_item,
-        data!!
-) {
-
+    : ArrayAdapter<Emoji?>(context, R.layout.rsc_emoji_item, data) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var view = convertView
@@ -33,6 +28,14 @@ class EmojiAdapter @JvmOverloads constructor(
         }
 
         return view!!
+    }
+
+    override fun getCount(): Int = data.size
+
+    fun updateItems(items: List<Emoji>) {
+        data.clear()
+        data.addAll(items)
+        notifyDataSetChanged()
     }
 
     internal class ViewHolder(view: View?, useSystemDefault: Boolean?) {
