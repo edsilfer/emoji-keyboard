@@ -8,15 +8,16 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.widget.Toolbar
 import br.com.instachat.emojilibrary.R
-import br.com.instachat.emojilibrary.view.EmojiCompatActivity
-import br.com.instachat.emojilibrary.view.EmojiCompatActivity.OnBackPressedListener
+import br.com.instachat.emojilibrary.view.EmojiActivity
+import br.com.instachat.emojilibrary.view.EmojiActivity.OnBackPressedListener
 import br.com.instachat.emojilibrary.view.EmojiEditText
+import br.com.instachat.emojilibrary.view.EmojiKeyboard
 import br.com.instachat.emojilibrary.view.listeners.KeyboardListener
-import br.com.instachat.emojilibrary.view.listeners.TelegramPanelEventListener
+import br.com.instachat.emojilibrary.view.listeners.PanelEventListener
 
-class TelegramPanel(
-        private val context: EmojiCompatActivity,
-        private val listener: TelegramPanelEventListener?
+class PanelController(
+        private val context: EmojiActivity,
+        private val listener: PanelEventListener?
 ) : KeyboardListener, TextWatcher {
 
     private var toogleIcon = true

@@ -3,7 +3,7 @@ package br.com.instachat.emojilibrary.view
 import androidx.appcompat.app.AppCompatActivity
 
 
-open class EmojiCompatActivity : AppCompatActivity() {
+open class EmojiActivity : AppCompatActivity() {
 
     private var onBackPressedListener: OnBackPressedListener? = null
 

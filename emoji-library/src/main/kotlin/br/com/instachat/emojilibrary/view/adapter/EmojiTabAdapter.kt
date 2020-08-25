@@ -1,10 +1,10 @@
-package br.com.instachat.emojilibrary.adapter
+package br.com.instachat.emojilibrary.view.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import br.com.instachat.emojilibrary.controller.pages.*
-import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener
+import br.com.instachat.emojilibrary.view.fragments.*
+import br.com.instachat.emojilibrary.view.listeners.EmojiClickListener
 
 class EmojiTabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -49,7 +49,7 @@ class EmojiTabAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm!!, BEHAVIO
         }
     }
 
-    fun onEmojiClicked(listener: OnEmojiClickListener) {
+    fun onEmojiClicked(listener: EmojiClickListener) {
         recentEmojis.registerListener(listener)
         peopleEmojis.registerListener(listener)
         natureEmojis.registerListener(listener)

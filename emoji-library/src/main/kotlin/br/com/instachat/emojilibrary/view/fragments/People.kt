@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller.pages
+package br.com.instachat.emojilibrary.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,28 +6,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import br.com.instachat.emojilibrary.R
-import br.com.instachat.emojilibrary.adapter.EmojiAdapter
-import br.com.instachat.emojilibrary.controller.FragmentEmoji
+import br.com.instachat.emojilibrary.view.adapter.EmojiAdapter
 import br.com.instachat.emojilibrary.model.Emoji
-import br.com.instachat.emojilibrary.model.Places
+import br.com.instachat.emojilibrary.model.People
 import br.com.instachat.emojilibrary.util.Constants
+import java.util.*
 
-class Places : FragmentEmoji() {
+class People : FragmentEmoji() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.frag_emoji_places, container, false)
+        return inflater.inflate(R.layout.frag_emoji_people, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        var data: Array<Emoji> = Places.DATA
+        var data: Array<Emoji> = People.DATA
         var useSystemDefault = false
         if (arguments != null) {
             data = arguments!!.getParcelableArray(Constants.EMOJI_KEY)?.map { it as Emoji }!!.toTypedArray()
             useSystemDefault = arguments!!.getBoolean(Constants.USE_SYSTEM_DEFAULT_KEY)
         }
+
         val gridView = view.findViewById<GridView>(R.id.Emoji_GridView)
-        gridView.adapter = EmojiAdapter(view.context, mutableListOf(*data), useSystemDefault)
+        gridView.adapter = EmojiAdapter(view.context, Arrays.asList(*data), useSystemDefault)
         gridView.onItemClickListener = this
     }
 }
-

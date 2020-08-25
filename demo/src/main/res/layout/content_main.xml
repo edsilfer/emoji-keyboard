@@ -16,7 +16,7 @@
         android:stackFromBottom="false"
         android:transcriptMode="normal" />
 
-    <br.com.instachat.emojilibrary.view.TelegramPanel
+    <br.com.instachat.emojilibrary.view.Panel
         android:id="@+id/bottompanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller.pages
+package br.com.instachat.emojilibrary.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.GridView
 import br.com.instachat.emojilibrary.R
-import br.com.instachat.emojilibrary.adapter.EmojiAdapter
-import br.com.instachat.emojilibrary.controller.FragmentEmoji
+import br.com.instachat.emojilibrary.view.adapter.EmojiAdapter
 import br.com.instachat.emojilibrary.model.Emoji
 import br.com.instachat.emojilibrary.model.Objects
 import br.com.instachat.emojilibrary.util.Constants

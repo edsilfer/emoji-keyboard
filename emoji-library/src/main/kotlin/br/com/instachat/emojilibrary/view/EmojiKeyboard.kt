@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller
+package br.com.instachat.emojilibrary.view
 
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -10,18 +10,16 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import br.com.instachat.emojilibrary.R
-import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter
+import br.com.instachat.emojilibrary.view.adapter.EmojiTabAdapter
 import br.com.instachat.emojilibrary.model.Emoji
-import br.com.instachat.emojilibrary.view.EmojiCompatActivity
-import br.com.instachat.emojilibrary.view.EmojiEditText
-import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener
+import br.com.instachat.emojilibrary.view.listeners.EmojiClickListener
 import com.ogaclejapan.smarttablayout.SmartTabLayout
 import kotlin.math.max
 
 class EmojiKeyboard(
-        private val activity: EmojiCompatActivity,
+        private val activity: EmojiActivity,
         private val input: EmojiEditText
-) : OnEmojiClickListener {
+) : EmojiClickListener {
 
     private var backspace: ImageView? = null
     private val tabIcons = arrayOfNulls<ImageView>(6)

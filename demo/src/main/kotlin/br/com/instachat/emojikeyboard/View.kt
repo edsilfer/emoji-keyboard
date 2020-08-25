@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.instachat.emojilibrary.controller.TelegramPanel
-import br.com.instachat.emojilibrary.view.EmojiCompatActivity
+import br.com.instachat.emojilibrary.controller.PanelController
+import br.com.instachat.emojilibrary.view.EmojiActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -34,16 +34,16 @@ interface ChatView {
 /**
  * {@link ChatView} implementation
  */
-class ChatViewImpl : ChatView, EmojiCompatActivity() {
+class ChatViewImpl : ChatView, EmojiActivity() {
 
-    private lateinit var inputPanel: TelegramPanel
+    private lateinit var inputPanelController: PanelController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupToolbarAndDrawerMenu()
         setupMessagesRecyclerView()
-        inputPanel = TelegramPanel(this, KeyboardListener(this))
+        inputPanelController = PanelController(this, KeyboardListener(this))
     }
 
     private fun setupToolbarAndDrawerMenu() {
@@ -72,10 +72,10 @@ class ChatViewImpl : ChatView, EmojiCompatActivity() {
     override fun addMessage(message: Message) {
         (messages.adapter as MessageAdapter).add(message)
         messages.scrollToPosition(messages.adapter!!.itemCount - 1)
-        inputPanel.text = ""
+        inputPanelController.text = ""
     }
 
-    override fun getMessage(): Message = Message.outgoing(inputPanel.text)
+    override fun getMessage(): Message = Message.outgoing(inputPanelController.text)
 
     override fun toast(message: String) = shortToast(message)
 

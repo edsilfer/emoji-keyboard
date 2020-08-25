@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.controller
+package br.com.instachat.emojilibrary.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import br.com.instachat.emojilibrary.R
 import br.com.instachat.emojilibrary.data.EmojiStore
 import br.com.instachat.emojilibrary.model.Emoji
-import br.com.instachat.emojilibrary.view.listeners.OnEmojiClickListener
+import br.com.instachat.emojilibrary.view.listeners.EmojiClickListener
 
 open class FragmentEmoji : Fragment(), OnItemClickListener {
 
     private var rootView: View? = null
-    private var emojiClickedListener: MutableList<OnEmojiClickListener> = mutableListOf()
+    private var emojiClickedListener: MutableList<EmojiClickListener> = mutableListOf()
     private lateinit var emojiStore: EmojiStore
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -30,7 +30,7 @@ open class FragmentEmoji : Fragment(), OnItemClickListener {
         emojiClickedListener.forEach { it.emojiCliked(emoji) }
     }
 
-    fun registerListener(listener: OnEmojiClickListener) {
+    fun registerListener(listener: EmojiClickListener) {
         emojiClickedListener.add(listener)
     }
 

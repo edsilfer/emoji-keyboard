@@ -1,6 +1,6 @@
 package br.com.instachat.emojilibrary.view.listeners
 
-interface TelegramPanelEventListener {
+interface PanelEventListener {
     fun onAttachClicked()
     fun onMicClicked()
     fun onSendClicked()

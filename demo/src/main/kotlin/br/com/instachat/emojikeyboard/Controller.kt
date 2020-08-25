@@ -1,7 +1,7 @@
 package br.com.instachat.emojikeyboard
 
 import android.view.MenuItem
-import br.com.instachat.emojilibrary.view.listeners.TelegramPanelEventListener
+import br.com.instachat.emojilibrary.view.listeners.PanelEventListener
 import com.google.android.material.navigation.NavigationView
 
 private const val ECHO_DELAY = 1000L
@@ -27,7 +27,7 @@ class ChatController(private val view: ChatView) : NavigationView.OnNavigationIt
 /**
  * Listener for keyboard interactions
  */
-class KeyboardListener(private val view: ChatView) : TelegramPanelEventListener {
+class KeyboardListener(private val view: ChatView) : PanelEventListener {
 
     override fun onAttachClicked() = view.toast("Attach was clicked!")
 

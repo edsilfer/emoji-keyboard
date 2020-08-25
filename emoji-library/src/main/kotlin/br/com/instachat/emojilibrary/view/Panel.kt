@@ -9,7 +9,7 @@ import androidx.annotation.RequiresApi
 import br.com.instachat.emojilibrary.R
 
 @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-class TelegramPanel @JvmOverloads constructor(
+class Panel @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet?,
         defStyleAttr: Int = 0,

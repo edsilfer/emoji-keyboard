@@ -1,4 +1,4 @@
-package br.com.instachat.emojilibrary.adapter
+package br.com.instachat.emojilibrary.view.adapter
 
 import android.content.Context
 import android.view.View
