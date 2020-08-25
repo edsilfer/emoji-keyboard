@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "br.com.edsilfer.emojikeyboard"
-        minSdkVersion 24
+        minSdkVersion 15
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -27,7 +27,8 @@ dependencies {
     implementation deps.external.smarttablayout
 
     // Internal
-//    implementation 'com.github.edsilfer:emoji-keyboard:2.0.0'
+    // Uncomment to test the release
+    // implementation 'com.github.edsilfer:emoji-keyboard:2.0.2'
     implementation project(':emoji-library')
 
     // Test
